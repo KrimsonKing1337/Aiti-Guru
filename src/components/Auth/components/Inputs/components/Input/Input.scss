@@ -1,0 +1,21 @@
+.Wrapper {
+  width: 100%;
+}
+
+.Label {
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.27px;
+  color: #232323;
+}
+
+.Input {
+  width: 100%;
+  margin-top: 6px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #EDEDED;
+}
