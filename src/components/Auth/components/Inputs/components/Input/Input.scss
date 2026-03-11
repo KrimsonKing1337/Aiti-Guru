@@ -12,10 +12,42 @@
   color: #232323;
 }
 
+.InputWrapper {
+  display: flex;
+  position: relative;
+}
+
 .Input {
   width: 100%;
   margin-top: 6px;
-  padding: 14px 16px;
+  padding: 14px 54px;
   border-radius: 12px;
   border: 1.5px solid #EDEDED;
+}
+
+.Icon {
+  position: absolute;
+  z-index: 1;
+  top: 6px;
+  bottom: 0;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ActionIcon {
+  position: absolute;
+  top: 6px;
+  bottom: 0;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }

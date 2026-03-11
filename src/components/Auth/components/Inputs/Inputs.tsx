@@ -1,12 +1,12 @@
-import { Input } from './components';
+import { InputLogin, InputPassword } from './components';
 
 import * as styles from './Inputs.scss';
 
 export const Inputs = () => {
   return (
     <div className={styles.Wrapper}>
-      <Input label="Логин" />
-      <Input label="Пароль" />
+      <InputLogin />
+      <InputPassword />
     </div>
   );
 };
