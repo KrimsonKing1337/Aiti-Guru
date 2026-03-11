@@ -1,8 +1,8 @@
-import { useState } from 'react';
-
 import { Svg } from 'types';
 
 export type InputProps = {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>
   label: string;
   placeholder: string;
   type?: string;
@@ -14,6 +14,8 @@ export type InputProps = {
 import * as styles from './Input.scss';
 
 export const Input = ({
+  value,
+  setValue,
   label,
   placeholder,
   type = 'text',
@@ -21,8 +23,6 @@ export const Input = ({
   ActionIcon,
   onActionIconClick,
 }: InputProps) => {
-  const [value, setValue] = useState('');
-
   const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };

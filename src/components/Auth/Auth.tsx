@@ -1,6 +1,6 @@
 import LogoIcon from 'assets/icons/logo.svg';
 
-import { Wrapper, Header, Inputs } from './components';
+import { Wrapper, Header, Inputs, RememberMe } from './components';
 
 export const Auth = () => {
   return (
@@ -8,6 +8,7 @@ export const Auth = () => {
       <LogoIcon />
       <Header />
       <Inputs />
+      <RememberMe />
     </Wrapper>
   );
 };

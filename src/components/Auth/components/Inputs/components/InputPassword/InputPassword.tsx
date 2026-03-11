@@ -7,6 +7,7 @@ import EyeIcon from 'assets/icons/eye.svg';
 import { Input } from '../Input';
 
 export const InputPassword = () => {
+  const [value, setValue] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const actionIconClickHandler = () => {
@@ -18,6 +19,8 @@ export const InputPassword = () => {
 
   return (
     <Input
+      value={value}
+      setValue={setValue}
       label="Пароль"
       type={type}
       placeholder="Введите пароль"
