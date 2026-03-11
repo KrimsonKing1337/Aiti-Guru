@@ -1,0 +1,11 @@
+@import '~reset-css/sass/reset';
+
+html,
+body,
+:global(#root) {
+  width: 100%;
+}
+
+body {
+  background: #F9F9F9;
+}

@@ -1,15 +1,11 @@
-import { Wrapper, Counter } from 'components';
+import { Auth } from 'components';
+
+import 'styles/styles.scss';
 
 export const App = () => {
   return (
     <div>
-      <Wrapper>
-        <h1>
-          Counter
-        </h1>
-
-        <Counter />
-      </Wrapper>
+      <Auth />
     </div>
   );
 };
