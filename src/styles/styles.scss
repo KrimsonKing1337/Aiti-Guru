@@ -1,4 +1,4 @@
-@import '~reset-css/sass/reset';
+@use '~reset-css/sass/reset';
 
 html,
 body,
@@ -8,4 +8,5 @@ body,
 
 body {
   background: #F9F9F9;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
