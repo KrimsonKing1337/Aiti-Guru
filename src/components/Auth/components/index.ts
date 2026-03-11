@@ -3,3 +3,8 @@ export * from './Header';
 export * from './Header';
 export * from './Inputs';
 export * from './RememberMe';
+export * from './Dashboard';
+export * from './LoginButton';
+export * from './Or';
+export * from './CreateAccount';
+export * from './Actions';

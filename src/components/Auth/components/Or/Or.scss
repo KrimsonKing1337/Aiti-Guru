@@ -4,6 +4,7 @@
   justify-content: flex-start;
   gap: 10px;
   width: 100%;
+  margin-top: 16px;
 }
 
 .Label {
@@ -11,12 +12,5 @@
   font-size: 16px;
   font-style: normal;
   line-height: 150%;
-  color: #9C9C9C;
-  cursor: pointer;
-}
-
-.Checkbox {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+  color: #E0E0E0;
 }

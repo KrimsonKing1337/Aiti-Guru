@@ -8,7 +8,7 @@ export const Header = () => {
       </div>
 
       <div className={styles.Subtitle}>
-        Пожалуйста, авторизируйтесь
+        Пожалуйста, авторизируйтесь {/* todo: авторизуйтесь? */}
       </div>
     </div>
   );
