@@ -6,9 +6,11 @@ import * as styles from './Wrapper.scss';
 
 export const Wrapper = ({ children }: WrapperProps) => {
   return (
-    <div className={styles.ExtraWrapper}>
-      <div className={styles.Wrapper}>
-        {children}
+    <div className={styles.MainWrapper}>
+      <div className={styles.ExtraWrapper}>
+        <div className={styles.Wrapper}>
+          {children}
+        </div>
       </div>
     </div>
   );
