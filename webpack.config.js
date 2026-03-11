@@ -66,6 +66,10 @@ export default (env = {}, argv) => {
       ],
     },
     {
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    },
+    {
       test: /\.(jpeg|jpg|png|docx)$/i,
       type: 'asset/resource',
     },
