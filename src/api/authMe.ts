@@ -5,10 +5,6 @@ import type { DummyJsonError, DummyJsonAuthLoginResponse } from './@types';
 export const authMe = async () => {
   const accessToken = localStorage.getItem('accessToken');
 
-  throw {
-    message: 'Error',
-  };
-
   try {
     const response = await axios.get<DummyJsonAuthLoginResponse>('https://dummyjson.com/auth/me', {
       headers: {

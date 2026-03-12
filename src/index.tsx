@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { store } from 'store';
 
-import { Auth, Goods } from 'pages';
+import { Main, Auth, Goods } from 'pages';
 
 import { App } from 'components';
 
@@ -18,7 +18,8 @@ root.render(
         <App />
 
         <Routes>
-          <Route path="/" element={<Auth />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/goods" element={<Goods />} />
         </Routes>
       </>
