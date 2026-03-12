@@ -4,13 +4,14 @@ import { toast } from 'react-toastify';
 
 import { loginFetch } from 'api';
 
-import type { DummyJsonError } from 'api/@types';
+import type { DummyJsonError, DummyJsonAuthLoginResponse } from 'api/@types';
 
 import { loginMessagesRu } from 'utils';
 
 import type { State } from './@types';
 import { actions } from './slice';
 import { selectors } from './selectors';
+import { setTokens } from './utils';
 
 function* watchFetch() {
   yield put(actions.fetchSuccess(null));
@@ -21,8 +22,17 @@ function* watchFetch() {
     const password: State['password'] = yield select(selectors.password);
     const rememberMe: State['rememberMe'] = yield select(selectors.rememberMe);
 
-    yield call(loginFetch, { login, password, rememberMe });
+    const { accessToken, refreshToken }: DummyJsonAuthLoginResponse = yield call(loginFetch, { login, password });
+
     yield put(actions.fetchSuccess(true));
+
+    const storageKey = rememberMe ? 'local' : 'session';
+
+    setTokens({
+      accessToken,
+      refreshToken,
+      storageKey,
+    });
   } catch (e) {
     const err = e as DummyJsonError;
 

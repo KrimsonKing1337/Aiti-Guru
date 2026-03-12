@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-import type { DummyJsonError } from './@types';
+import type { DummyJsonError, DummyJsonAuthLoginResponse } from './@types';
 
 export type LoginFetch = {
   login: string;
   password: string;
-  rememberMe: boolean;
 }
 
 /*
@@ -23,7 +22,7 @@ export const loginFetch = async ({ login, password }: LoginFetch) => {
   }
 
   try {
-    const response = await axios.post('https://dummyjson.com/auth/login', {
+    const response = await axios.post<DummyJsonAuthLoginResponse>('https://dummyjson.com/auth/login', {
       username,
       password: pass,
       credentials: 'include',
