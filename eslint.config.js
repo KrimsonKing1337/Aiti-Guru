@@ -80,6 +80,7 @@ export default defineConfig([globIgnores, {
         { pattern: 'api{,/**}', group: 'internal', position: 'after' },
         { pattern: 'store{,/**}', group: 'internal', position: 'after' },
         { pattern: 'hooks{,/**}', group: 'internal', position: 'after' },
+        { pattern: 'pages{,/**}', group: 'internal', position: 'after' },
         { pattern: 'components{,/**}', group: 'internal', position: 'after' },
         { pattern: 'utils{,/**}', group: 'internal', position: 'after' },
       ],
