@@ -1,15 +1,23 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import UserIcon from 'assets/icons/user.svg';
 import CrossIcon from 'assets/icons/cross.svg';
 
+import { loginActions, loginSelectors } from 'store/login';
+
 import { Input } from '../Input';
 
 export const InputLogin = () => {
-  const [value, setValue] = useState('');
+  const dispatch = useDispatch();
+
+  const value = useSelector(loginSelectors.login);
+
+  const setValue = (value: string) => {
+    dispatch(loginActions.setLogin(value));
+  };
 
   const actionIconClickHandler = () => {
-    setValue('');
+    dispatch(loginActions.setLogin(''));
   };
 
   return (

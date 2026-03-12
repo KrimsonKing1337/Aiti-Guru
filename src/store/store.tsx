@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
-import { counterReducer, watchCounterActions } from './counter';
+import { loginReducer, watchLoginActions } from './login';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const reducer = {
-  counter: counterReducer,
+  login: loginReducer,
 };
 
 const middlewares = [
@@ -18,6 +18,6 @@ export const store = configureStore({
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(middlewares),
 });
 
-sagaMiddleware.run(watchCounterActions);
+sagaMiddleware.run(watchLoginActions);
 
 export type RootState = ReturnType<typeof store.getState>;

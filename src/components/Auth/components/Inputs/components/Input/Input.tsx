@@ -2,7 +2,7 @@ import { Svg } from 'types';
 
 export type InputProps = {
   value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>
+  setValue: (value: string) => void;
   label: string;
   placeholder: string;
   type?: string;
