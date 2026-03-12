@@ -1,22 +1,28 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 import SquareIcon from 'assets/icons/square.svg';
 import SquareCheckedIcon from 'assets/icons/square-checked.svg';
 
-import { loginActions, loginSelectors } from 'store/login';
-
 import * as styles from './RememberMe.scss';
 
 export const RememberMe = () => {
-  const dispatch = useDispatch();
+  const [isCheckedState, setIsCheckedState] = useState(false);
 
-  const isChecked = useSelector(loginSelectors.rememberMe);
+  useEffect(() => {
+    const isChecked = localStorage.getItem('rememberMe') === 'true';
+
+    setIsCheckedState(isChecked);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('rememberMe', isCheckedState.toString());
+  }, [isCheckedState]);
 
   const wrapperClickHandler = () => {
-    dispatch(loginActions.setRememberMe(!isChecked));
+    setIsCheckedState(!isCheckedState);
   };
 
-  const Icon = isChecked ? SquareCheckedIcon : SquareIcon;
+  const Icon = isCheckedState ? SquareCheckedIcon : SquareIcon;
 
   return (
     <div className={styles.Wrapper} onClick={wrapperClickHandler}>

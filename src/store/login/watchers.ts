@@ -13,39 +13,6 @@ import { actions } from './slice';
 import { selectors } from './selectors';
 import { setTokens } from './utils';
 
-function* watchAuthLoginFetch() {
-  yield put(actions.fetchSuccess(null));
-  yield put(actions.fetchError(null));
-
-  try {
-    const login: State['login'] = yield select(selectors.login);
-    const password: State['password'] = yield select(selectors.password);
-    const rememberMe: State['rememberMe'] = yield select(selectors.rememberMe);
-
-    const { accessToken, refreshToken }: DummyJsonAuthLoginResponse = yield call(authLogin, { login, password });
-
-    yield put(actions.fetchSuccess(true));
-
-    const storageKey = rememberMe ? 'local' : 'session';
-
-    setTokens({
-      accessToken,
-      refreshToken,
-      storageKey,
-    });
-  } catch (e) {
-    const err = e as DummyJsonError;
-
-    const error = err?.response?.data?.message as string;
-    const errorRu = loginMessagesRu[error];
-
-    yield put(actions.fetchError(err));
-    yield put(actions.fetchSuccess(false));
-
-    yield toast.error(errorRu);
-  }
-}
-
 function* onAuthError(e: unknown) {
   const err = e as DummyJsonError;
 
@@ -54,9 +21,43 @@ function* onAuthError(e: unknown) {
   yield put(actions.setAuthed(false));
 }
 
-function* watchAuthMeFetch() {
-  const rememberMe: State['rememberMe'] = yield select(selectors.rememberMe);
+function* setTokensShared(accessToken: string, refreshToken: string) {
+  const rememberMe = localStorage.getItem('rememberMe') === 'true';
 
+  const storageKey = rememberMe ? 'local' : 'session';
+
+  yield call(setTokens, {
+    accessToken,
+    refreshToken,
+    storageKey,
+  });
+}
+
+function* watchAuthLoginFetch() {
+  yield put(actions.fetchSuccess(null));
+  yield put(actions.fetchError(null));
+
+  try {
+    const login: State['login'] = yield select(selectors.login);
+    const password: State['password'] = yield select(selectors.password);
+
+    const { accessToken, refreshToken }: DummyJsonAuthLoginResponse = yield call(authLogin, { login, password });
+
+    yield put(actions.fetchSuccess(true));
+
+    yield setTokensShared(accessToken, refreshToken);
+  } catch (e) {
+    const err = e as DummyJsonError;
+
+    const error = err?.response?.data?.message as string;
+    const errorRu = loginMessagesRu[error];
+
+    yield onAuthError(e);
+    yield call(toast.error, errorRu);
+  }
+}
+
+function* watchAuthMeFetch() {
   yield put(actions.fetchSuccess(null));
   yield put(actions.fetchError(null));
 
@@ -65,8 +66,12 @@ function* watchAuthMeFetch() {
 
     yield put(actions.fetchSuccess(true));
     yield put(actions.setAuthed(true));
+
+    return;
   } catch (e) {
-    onAuthError(e);
+    const err = e as DummyJsonError;
+
+    yield put(actions.fetchError(err));
   }
 
   try {
@@ -74,17 +79,11 @@ function* watchAuthMeFetch() {
 
     yield put(actions.fetchSuccess(true));
 
-    const storageKey = rememberMe ? 'local' : 'session';
-
-    setTokens({
-      accessToken,
-      refreshToken,
-      storageKey,
-    });
+    yield setTokensShared(accessToken, refreshToken);
 
     yield put(actions.setAuthed(true));
   } catch (e) {
-    onAuthError(e);
+    yield onAuthError(e);
   }
 }
 

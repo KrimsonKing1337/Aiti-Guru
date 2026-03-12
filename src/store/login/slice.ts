@@ -5,7 +5,6 @@ import { State } from './@types';
 export const initialState: State = {
   login: '',
   password: '',
-  rememberMe: false,
   isAuthed: null,
   isFetching: false,
   isFetchSuccess: null,
@@ -21,9 +20,6 @@ const slice = createSlice({
     },
     setPassword(state, action: PayloadAction<State['password']>) {
       state.password = action.payload;
-    },
-    setRememberMe(state, action: PayloadAction<State['rememberMe']>) {
-      state.rememberMe = action.payload;
     },
     setAuthed(state, action: PayloadAction<State['isAuthed']>) {
       state.isAuthed = action.payload;
