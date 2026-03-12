@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 
 import { loginFetch } from 'api';
 
+import { loginMessagesRu } from 'utils';
+
 import type { State } from './@types';
 import { actions } from './slice';
 import { selectors } from './selectors';
@@ -16,7 +18,10 @@ function* watchFetch() {
 
     yield call(loginFetch, { login, password, rememberMe });
   } catch (e) {
-    toast.error(`Ошибка: ${e}`);
+    const error = e as string;
+    const errorRu = loginMessagesRu[error];
+
+    toast.error(errorRu);
   }
 }
 
