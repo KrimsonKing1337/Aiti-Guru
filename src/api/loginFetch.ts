@@ -31,8 +31,6 @@ export const loginFetch = async ({ login, password }: LoginFetch) => {
 
     return response.data;
   } catch (e) {
-    const error = e as DummyJsonError;
-
-    throw new Error(error?.response?.data?.message);
+    throw e as DummyJsonError;
   }
 };

@@ -1,8 +1,10 @@
-import { call, select, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { toast } from 'react-toastify';
 
 import { loginFetch } from 'api';
+
+import type { DummyJsonError } from 'api/@types';
 
 import { loginMessagesRu } from 'utils';
 
@@ -11,17 +13,26 @@ import { actions } from './slice';
 import { selectors } from './selectors';
 
 function* watchFetch() {
+  yield put(actions.fetchSuccess(null));
+  yield put(actions.fetchError(null));
+
   try {
     const login: State['login'] = yield select(selectors.login);
     const password: State['password'] = yield select(selectors.password);
     const rememberMe: State['rememberMe'] = yield select(selectors.rememberMe);
 
     yield call(loginFetch, { login, password, rememberMe });
+    yield put(actions.fetchSuccess(true));
   } catch (e) {
-    const error = e as string;
+    const err = e as DummyJsonError;
+
+    const error = err?.response?.data?.message as string;
     const errorRu = loginMessagesRu[error];
 
-    toast.error(errorRu);
+    yield put(actions.fetchError(err));
+    yield put(actions.fetchSuccess(false));
+
+    yield toast.error(errorRu);
   }
 }
 

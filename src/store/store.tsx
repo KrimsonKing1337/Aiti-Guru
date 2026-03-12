@@ -15,7 +15,9 @@ const middlewares = [
 
 export const store = configureStore({
   reducer,
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(middlewares),
+  middleware: getDefaultMiddleware => getDefaultMiddleware({
+    serializableCheck: false,
+  }).concat(middlewares),
 });
 
 sagaMiddleware.run(watchLoginActions);

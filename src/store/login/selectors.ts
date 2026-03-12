@@ -4,4 +4,6 @@ export const selectors = {
   login: (state: RootState) => state.login.login,
   password: (state: RootState) => state.login.password,
   rememberMe: (state: RootState) => state.login.rememberMe,
+  isFetchSuccess: (state: RootState) => state.login.isFetchSuccess,
+  fetchError: (state: RootState) => state.login.fetchError,
 };

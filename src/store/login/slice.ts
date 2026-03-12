@@ -6,6 +6,8 @@ export const initialState: State = {
   login: '',
   password: '',
   rememberMe: false,
+  isFetchSuccess: null,
+  fetchError: null,
 };
 
 const slice = createSlice({
@@ -23,6 +25,12 @@ const slice = createSlice({
     },
 
     fetch() {},
+    fetchSuccess(state, action: PayloadAction<State['isFetchSuccess']>) {
+      state.isFetchSuccess = action.payload;
+    },
+    fetchError(state, action: PayloadAction<State['fetchError']>) {
+      state.fetchError = action.payload;
+    },
   },
 });
 
