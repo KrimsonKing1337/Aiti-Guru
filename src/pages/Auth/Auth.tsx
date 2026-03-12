@@ -1,6 +1,8 @@
 import LogoIcon from 'assets/icons/logo.svg';
 
-import { Wrapper, Header, Dashboard } from './components';
+import { Wrapper } from 'components';
+
+import { Header, Dashboard } from './components';
 
 export const Auth = () => {
   return (

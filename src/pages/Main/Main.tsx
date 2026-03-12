@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { loginActions, loginSelectors } from 'store/login';
 
-import { Wrapper } from 'pages/Auth/components';
+import { Wrapper } from 'components';
 
 import * as styles from './Main.scss';
 
