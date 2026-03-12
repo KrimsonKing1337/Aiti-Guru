@@ -2,8 +2,8 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { toast } from 'react-toastify';
 
-import type { DummyJsonError, DummyJsonAuthLoginResponse } from 'api/@types';
-import { authLogin, authMe } from 'api';
+import type { DummyJsonError, DummyJsonAuthLoginResponse, DummyJsonAuthRefreshResponse } from 'api/@types';
+import { authLogin, authMe, authRefresh } from 'api';
 
 import { loginMessagesRu } from 'utils';
 
@@ -46,7 +46,17 @@ function* watchAuthLoginFetch() {
   }
 }
 
+function* onAuthError(e: unknown) {
+  const err = e as DummyJsonError;
+
+  yield put(actions.fetchError(err));
+  yield put(actions.fetchSuccess(false));
+  yield put(actions.setAuthed(false));
+}
+
 function* watchAuthMeFetch() {
+  const rememberMe: State['rememberMe'] = yield select(selectors.rememberMe);
+
   yield put(actions.fetchSuccess(null));
   yield put(actions.fetchError(null));
 
@@ -56,11 +66,25 @@ function* watchAuthMeFetch() {
     yield put(actions.fetchSuccess(true));
     yield put(actions.setAuthed(true));
   } catch (e) {
-    const err = e as DummyJsonError;
+    onAuthError(e);
+  }
 
-    yield put(actions.fetchError(err));
-    yield put(actions.fetchSuccess(false));
-    yield put(actions.setAuthed(false));
+  try {
+    const { accessToken, refreshToken }: DummyJsonAuthRefreshResponse = yield call(authRefresh);
+
+    yield put(actions.fetchSuccess(true));
+
+    const storageKey = rememberMe ? 'local' : 'session';
+
+    setTokens({
+      accessToken,
+      refreshToken,
+      storageKey,
+    });
+
+    yield put(actions.setAuthed(true));
+  } catch (e) {
+    onAuthError(e);
   }
 }
 

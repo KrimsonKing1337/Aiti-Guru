@@ -13,3 +13,5 @@ export type DummyJsonAuthLoginResponse = {
   accessToken: string;
   refreshToken: string;
 };
+
+export type DummyJsonAuthRefreshResponse = Pick<DummyJsonAuthLoginResponse, 'accessToken' | 'refreshToken'>;
