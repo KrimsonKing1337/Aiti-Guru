@@ -7,6 +7,6 @@ export type SetTokensArgs = {
 export const setTokens = ({ accessToken, refreshToken, storageKey }: SetTokensArgs) => {
   const storage = storageKey === 'session' ? sessionStorage : localStorage;
 
-  storage.setItem('token', accessToken);
+  storage.setItem('accessToken', accessToken);
   storage.setItem('refreshToken', refreshToken);
 };

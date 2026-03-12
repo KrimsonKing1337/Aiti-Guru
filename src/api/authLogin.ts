@@ -12,7 +12,7 @@ export type LoginFetch = {
   я использую сокращённый вариант 777
 */
 
-export const loginFetch = async ({ login, password }: LoginFetch) => {
+export const authLogin = async ({ login, password }: LoginFetch) => {
   let username = login;
   let pass = password;
 

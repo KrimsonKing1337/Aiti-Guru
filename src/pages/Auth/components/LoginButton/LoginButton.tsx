@@ -34,7 +34,7 @@ export const LoginButton = () => {
       return;
     }
 
-    dispatch(loginActions.fetch());
+    dispatch(loginActions.authLoginFetch());
   };
 
   const content = isFetching ? <LoadingIcon className={styles.LoadingIcon} /> : 'Войти';

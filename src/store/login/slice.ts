@@ -6,6 +6,7 @@ export const initialState: State = {
   login: '',
   password: '',
   rememberMe: false,
+  isAuthed: null,
   isFetching: false,
   isFetchSuccess: null,
   fetchError: null,
@@ -24,10 +25,17 @@ const slice = createSlice({
     setRememberMe(state, action: PayloadAction<State['rememberMe']>) {
       state.rememberMe = action.payload;
     },
+    setAuthed(state, action: PayloadAction<State['isAuthed']>) {
+      state.isAuthed = action.payload;
+    },
 
-    fetch(state) {
+    authLoginFetch(state) {
       state.isFetching = true;
     },
+    authMeFetch(state) {
+      state.isFetching = true;
+    },
+
     fetchSuccess(state, action: PayloadAction<State['isFetchSuccess']>) {
       state.isFetchSuccess = action.payload;
 

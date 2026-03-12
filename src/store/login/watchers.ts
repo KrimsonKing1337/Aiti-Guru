@@ -2,18 +2,18 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { toast } from 'react-toastify';
 
-import { loginFetch } from 'api';
-
 import type { DummyJsonError, DummyJsonAuthLoginResponse } from 'api/@types';
+import { authLogin, authMe } from 'api';
 
 import { loginMessagesRu } from 'utils';
 
 import type { State } from './@types';
+
 import { actions } from './slice';
 import { selectors } from './selectors';
 import { setTokens } from './utils';
 
-function* watchFetch() {
+function* watchAuthLoginFetch() {
   yield put(actions.fetchSuccess(null));
   yield put(actions.fetchError(null));
 
@@ -22,7 +22,7 @@ function* watchFetch() {
     const password: State['password'] = yield select(selectors.password);
     const rememberMe: State['rememberMe'] = yield select(selectors.rememberMe);
 
-    const { accessToken, refreshToken }: DummyJsonAuthLoginResponse = yield call(loginFetch, { login, password });
+    const { accessToken, refreshToken }: DummyJsonAuthLoginResponse = yield call(authLogin, { login, password });
 
     yield put(actions.fetchSuccess(true));
 
@@ -46,6 +46,25 @@ function* watchFetch() {
   }
 }
 
+function* watchAuthMeFetch() {
+  yield put(actions.fetchSuccess(null));
+  yield put(actions.fetchError(null));
+
+  try {
+    yield call(authMe);
+
+    yield put(actions.fetchSuccess(true));
+    yield put(actions.setAuthed(true));
+  } catch (e) {
+    const err = e as DummyJsonError;
+
+    yield put(actions.fetchError(err));
+    yield put(actions.fetchSuccess(false));
+    yield put(actions.setAuthed(false));
+  }
+}
+
 export function* watchActions() {
-  yield takeLatest(actions.fetch, watchFetch);
+  yield takeLatest(actions.authLoginFetch, watchAuthLoginFetch);
+  yield takeLatest(actions.authMeFetch, watchAuthMeFetch);
 }
