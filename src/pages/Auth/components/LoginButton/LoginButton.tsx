@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import LoadingIcon from 'assets/icons/loading-for-button.svg';
+
 import { loginActions, loginSelectors } from 'store/login';
 
 import * as styles from './LoginButton.scss';
@@ -16,6 +18,7 @@ export const LoginButton = () => {
 
   const login = useSelector(loginSelectors.login);
   const password = useSelector(loginSelectors.password);
+  const isFetching = useSelector(loginSelectors.isFetching);
   const isFetchSuccess = useSelector(loginSelectors.isFetchSuccess);
 
   useEffect(() => {
@@ -34,9 +37,11 @@ export const LoginButton = () => {
     dispatch(loginActions.fetch());
   };
 
+  const content = isFetching ? <LoadingIcon className={styles.LoadingIcon} /> : 'Войти';
+
   return (
     <div className={styles.Wrapper} onClick={clickHandler}>
-      Войти
+      {content}
     </div>
   );
 };
