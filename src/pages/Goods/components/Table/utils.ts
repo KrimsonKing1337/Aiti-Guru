@@ -1,4 +1,4 @@
-import type { ColumnDef, SortDirection } from '@tanstack/react-table';
+import type { ColumnDef } from '@tanstack/react-table';
 
 import type { Product } from 'api/@types';
 
@@ -25,16 +25,3 @@ export const columns: ColumnDef<Product>[] = [
   },
 ];
 
-export const getSortingIcon = (sortState: SortDirection | false) => {
-  let icon = null;
-
-  if (sortState === 'asc') {
-    icon = ' ^';
-  }
-
-  if (sortState === 'desc') {
-    icon = ' v';
-  }
-
-  return icon;
-};

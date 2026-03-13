@@ -15,7 +15,8 @@ import type { FetchProductParams, Product } from 'api/@types';
 
 import { goodsActions, goodsSelectors } from 'store/goods';
 
-import { columns, getSortingIcon } from './utils';
+import { Head } from './components';
+import { columns } from './utils';
 
 export function Table() {
   const dispatch = useDispatch();
@@ -97,40 +98,7 @@ export function Table() {
       {isFetching && <div>Loading...</div>}
 
       <table>
-        <thead>
-          {table.getHeaderGroups().map(groupCur => {
-            const { headers } = groupCur;
-
-            return (
-              <tr key={groupCur.id}>
-                {headers.map(headerCur => {
-                  const { column, getContext } = headerCur;
-
-                  const flexRenderResult = flexRender(
-                    column.columnDef.header,
-                    getContext(),
-                  );
-
-                  const sortState = column.getIsSorted();
-                  const icon = getSortingIcon(sortState);
-
-                  const clickHandler = column.getToggleSortingHandler();
-
-                  return (
-                    <th
-                      key={headerCur.id}
-                      style={{ cursor: 'pointer' }}
-                      onClick={clickHandler}
-                    >
-                      {flexRenderResult}
-                      {icon}
-                    </th>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </thead>
+        <Head table={table} />
 
         <tbody>
           {table.getRowModel().rows.map(rowCur => {
