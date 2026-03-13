@@ -14,6 +14,8 @@ import type { FetchProductsParams } from 'api/@types';
 
 import { goodsActions, goodsSelectors } from 'store/goods';
 
+import { getRememberMe } from 'utils';
+
 import { Head, Body, Pagination } from './components';
 
 import { columns } from './utils';
@@ -31,6 +33,24 @@ export function Table() {
     pageIndex: 0,
     pageSize: 10,
   });
+
+  useEffect(() => {
+    const sortingLocalStorage = localStorage.getItem('sorting');
+
+    if (sortingLocalStorage) {
+      setSorting(JSON.parse(sortingLocalStorage));
+    }
+  }, []);
+
+  useEffect(() => {
+    const rememberMe = getRememberMe();
+
+    if (rememberMe) {
+      localStorage.setItem('sorting', JSON.stringify(sorting));
+    } else {
+      localStorage.removeItem('sorting');
+    }
+  }, [sorting]);
 
   useEffect(() => {
     setPagination((prev) => {

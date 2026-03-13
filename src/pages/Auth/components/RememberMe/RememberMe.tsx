@@ -3,19 +3,21 @@ import { useEffect, useState } from 'react';
 import SquareIcon from 'assets/icons/square.svg';
 import SquareCheckedIcon from 'assets/icons/square-checked.svg';
 
+import { getRememberMe, setRememberMe } from 'utils';
+
 import * as styles from './RememberMe.scss';
 
 export const RememberMe = () => {
   const [isCheckedState, setIsCheckedState] = useState(false);
 
   useEffect(() => {
-    const isChecked = localStorage.getItem('rememberMe') === 'true';
+    const isChecked = getRememberMe();
 
     setIsCheckedState(isChecked);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('rememberMe', isCheckedState.toString());
+    setRememberMe(true);
   }, [isCheckedState]);
 
   const wrapperClickHandler = () => {
