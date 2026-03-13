@@ -86,7 +86,6 @@ export function Table() {
 
     return params;
   }, [
-    sorting,
     pageIndex,
     pageSize,
     sortId,
