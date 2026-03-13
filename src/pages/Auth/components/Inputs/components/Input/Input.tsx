@@ -1,4 +1,4 @@
-import { Svg } from 'types';
+import { Svg } from '@types';
 
 export type InputProps = {
   value: string;
