@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -41,9 +41,9 @@ export function Table() {
     });
   }, [search]);
 
-  useEffect(() => {
-    const sort = sorting[0];
+  const sort = sorting[0];
 
+  const params = useMemo<FetchProductsParams>(() => {
     const limit = pagination.pageSize;
     const skip = pagination.pageIndex * pagination.pageSize;
     const sortBy = sort?.id ?? '';
@@ -60,8 +60,19 @@ export function Table() {
       params.search = search;
     }
 
+    return params;
+  }, [
+    sorting,
+    pagination.pageIndex,
+    pagination.pageSize,
+    sort?.id,
+    sort?.desc,
+    search,
+  ]);
+
+  useEffect(() => {
     dispatch(goodsActions.productsFetch(params));
-  }, [sorting, pagination, search]);
+  }, [params]);
 
   const total = products?.total || 0;
   const pageCount = Math.ceil(total / pagination.pageSize);
