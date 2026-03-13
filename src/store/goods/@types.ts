@@ -1,7 +1,7 @@
-import { DummyJsonError, Product } from 'api/@types';
+import { DummyJsonError, DummyJsonProductsResponse } from 'api/@types';
 
 export interface State {
-  products: Product[];
+  products: DummyJsonProductsResponse | null;
   isFetching: boolean;
   isFetchSuccess: boolean | null;
   fetchError: DummyJsonError | null;

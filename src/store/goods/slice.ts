@@ -1,9 +1,11 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-import { State } from './@types';
+import type { FetchProductParams } from 'api/@types';
+
+import type { State } from './@types';
 
 export const initialState: State = {
-  products: [],
+  products: null,
   isFetching: false,
   isFetchSuccess: null,
   fetchError: null,
@@ -17,7 +19,8 @@ const slice = createSlice({
       state.products = action.payload;
     },
 
-    productsFetch(state) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    productsFetch(state, _action: PayloadAction<FetchProductParams>) {
       state.isFetching = true;
     },
 

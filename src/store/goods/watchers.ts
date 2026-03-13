@@ -2,19 +2,23 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { toast } from 'react-toastify';
 
-import type { DummyJsonError, DummyJsonProductsResponse } from 'api/@types';
+import type { PayloadAction } from '@reduxjs/toolkit';
+
+import type { DummyJsonError, DummyJsonProductsResponse, FetchProductParams } from 'api/@types';
 import { products as fetchProducts } from 'api';
 
 import { actions } from './slice';
 
-function* watchProductsFetch() {
+function* watchProductsFetch(action: PayloadAction<FetchProductParams>) {
+  const fetchProductsParams = action.payload;
+
   yield put(actions.fetchSuccess(null));
   yield put(actions.fetchError(null));
 
   try {
-    const { products }: DummyJsonProductsResponse = yield call(fetchProducts);
+    const data: DummyJsonProductsResponse = yield call(fetchProducts, fetchProductsParams);
 
-    yield put(actions.setProducts(products));
+    yield put(actions.setProducts(data));
     yield put(actions.fetchSuccess(true));
   } catch (e) {
     const err = e as DummyJsonError;

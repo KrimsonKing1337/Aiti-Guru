@@ -61,3 +61,10 @@ export type DummyJsonProductsResponse = {
   skip: number;
   limit: number;
 };
+
+export type FetchProductParams = {
+  limit: number;
+  skip: number;
+  sortBy: string;
+  order: 'asc' | 'desc';
+};

@@ -1,19 +1,7 @@
-import { useEffect } from 'react';
-
-import { useDispatch } from 'react-redux';
-
-import { goodsActions } from 'store/goods';
+import { Table } from './components';
 
 export const Goods = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(goodsActions.productsFetch());
-  }, []);
-
   return (
-    <div>
-      Здесь будут товары
-    </div>
+    <Table />
   );
 };
