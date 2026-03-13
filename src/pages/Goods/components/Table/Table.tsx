@@ -79,7 +79,7 @@ export function Table() {
   }, [params]);
 
   const total = products?.total || 0;
-  const pageCount = Math.ceil(total / pagination.pageSize);
+  const pageCount = Math.ceil(total / pageSize);
 
   const productsData = products?.products || [];
 
