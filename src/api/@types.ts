@@ -62,9 +62,14 @@ export type DummyJsonProductsResponse = {
   limit: number;
 };
 
-export type FetchProductParams = {
+export type FetchProductsParams = {
   limit: number;
   skip: number;
   sortBy: string;
   order: 'asc' | 'desc';
+  search?: string;
+};
+
+export type FetchProductsRequestParams = Omit<FetchProductsParams, 'search'> & {
+  q?: string;
 };

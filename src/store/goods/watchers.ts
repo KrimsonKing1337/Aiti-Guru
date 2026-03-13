@@ -4,12 +4,17 @@ import { toast } from 'react-toastify';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import type { DummyJsonError, DummyJsonProductsResponse, FetchProductParams } from 'api/@types';
+import type {
+  DummyJsonError,
+  DummyJsonProductsResponse,
+  FetchProductsParams,
+} from 'api/@types';
+
 import { products as fetchProducts } from 'api';
 
 import { actions } from './slice';
 
-function* watchProductsFetch(action: PayloadAction<FetchProductParams>) {
+function* watchProductsFetch(action: PayloadAction<FetchProductsParams>) {
   const fetchProductsParams = action.payload;
 
   yield put(actions.fetchSuccess(null));
