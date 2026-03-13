@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { goodsActions, goodsSelectors } from 'store/goods';
 
+import { useDebounce } from 'hooks';
+
 import * as styles from './Header.scss';
 
 export const Header = () => {
@@ -13,23 +15,19 @@ export const Header = () => {
 
   const [value, setValue] = useState(search);
 
+  const debouncedValue = useDebounce(value, 500);
+
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
   useEffect(() => {
-    if (value.length === 1) {
+    if (debouncedValue.length === 1) {
       return;
     }
 
-    const timer = setTimeout(() => {
-      dispatch(goodsActions.setSearch(value));
-    }, 500);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [value, dispatch]);
+    dispatch(goodsActions.setSearch(debouncedValue));
+  }, [debouncedValue, dispatch]);
 
   return (
     <div className={styles.Wrapper}>
