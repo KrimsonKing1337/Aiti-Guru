@@ -6,6 +6,7 @@ import type { State } from './@types';
 
 export const initialState: State = {
   products: null,
+  search: '',
   isFetching: false,
   isFetchSuccess: null,
   fetchError: null,
@@ -17,6 +18,9 @@ const slice = createSlice({
   reducers: {
     setProducts(state, action: PayloadAction<State['products']>) {
       state.products = action.payload;
+    },
+    setSearch(state, action: PayloadAction<State['search']>) {
+      state.search = action.payload;
     },
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
