@@ -45,5 +45,7 @@ export const Main = () => {
     );
   }
 
-  return <Outlet />;
+  return (
+    <Outlet />
+  );
 };
