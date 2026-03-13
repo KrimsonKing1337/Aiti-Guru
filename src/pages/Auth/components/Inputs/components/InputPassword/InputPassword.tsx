@@ -6,19 +6,19 @@ import LockIcon from 'assets/icons/lock.svg';
 import EyeOffIcon from 'assets/icons/eye-off.svg';
 import EyeIcon from 'assets/icons/eye.svg';
 
-import { loginActions, loginSelectors } from 'store/login';
+import { authActions, authSelectors } from 'store/auth';
 
 import { Input } from '../Input';
 
 export const InputPassword = () => {
   const dispatch = useDispatch();
 
-  const value = useSelector(loginSelectors.password);
+  const value = useSelector(authSelectors.password);
 
   const [showPassword, setShowPassword] = useState(false);
 
   const setValue = (value: string) => {
-    dispatch(loginActions.setPassword(value));
+    dispatch(authActions.setPassword(value));
   };
 
   const actionIconClickHandler = () => {

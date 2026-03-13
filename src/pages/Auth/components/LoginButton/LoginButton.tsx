@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import LoadingIcon from 'assets/icons/loading-for-button.svg';
 
-import { loginActions, loginSelectors } from 'store/login';
+import { authActions, authSelectors } from 'store/auth';
 
 import * as styles from './LoginButton.scss';
 
@@ -16,10 +16,10 @@ export const LoginButton = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const login = useSelector(loginSelectors.login);
-  const password = useSelector(loginSelectors.password);
-  const isFetching = useSelector(loginSelectors.isFetching);
-  const isFetchSuccess = useSelector(loginSelectors.isFetchSuccess);
+  const login = useSelector(authSelectors.login);
+  const password = useSelector(authSelectors.password);
+  const isFetching = useSelector(authSelectors.isFetching);
+  const isFetchSuccess = useSelector(authSelectors.isFetchSuccess);
 
   useEffect(() => {
     if (isFetchSuccess) {
@@ -34,7 +34,7 @@ export const LoginButton = () => {
       return;
     }
 
-    dispatch(loginActions.authLoginFetch());
+    dispatch(authActions.authLoginFetch());
   };
 
   const content = isFetching ? <LoadingIcon className={styles.LoadingIcon} /> : 'Войти';

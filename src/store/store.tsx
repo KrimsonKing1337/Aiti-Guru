@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
-import { loginReducer, watchLoginActions } from './login';
+import { authReducer, watchAuthActions } from './auth';
 import { goodsReducer, watchGoodsActions } from './goods';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const reducer = {
-  login: loginReducer,
+  auth: authReducer,
   goods: goodsReducer,
 };
 
@@ -22,7 +22,7 @@ export const store = configureStore({
   }).concat(middlewares),
 });
 
-sagaMiddleware.run(watchLoginActions);
+sagaMiddleware.run(watchAuthActions);
 sagaMiddleware.run(watchGoodsActions);
 
 export type RootState = ReturnType<typeof store.getState>;

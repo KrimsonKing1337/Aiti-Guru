@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loginActions, loginSelectors } from 'store/login';
+import { authActions, authSelectors } from 'store/auth';
 
 import { Wrapper } from 'components';
 
@@ -14,11 +14,11 @@ export const Main = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const isAuthed = useSelector(loginSelectors.isAuthed);
-  const isFetchSuccess = useSelector(loginSelectors.isFetchSuccess);
+  const isAuthed = useSelector(authSelectors.isAuthed);
+  const isFetchSuccess = useSelector(authSelectors.isFetchSuccess);
 
   useEffect(() => {
-    dispatch(loginActions.authMeFetch());
+    dispatch(authActions.authMeFetch());
   }, []);
 
   useEffect(() => {
