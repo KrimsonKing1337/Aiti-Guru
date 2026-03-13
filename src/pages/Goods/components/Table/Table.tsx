@@ -14,7 +14,7 @@ import type { FetchProductParams, Product } from 'api/@types';
 
 import { goodsActions, goodsSelectors } from 'store/goods';
 
-import { Head, Body } from './components';
+import { Head, Body, Pagination } from './components';
 
 import { columns } from './utils';
 
@@ -65,10 +65,12 @@ export function Table() {
   const table = useReactTable({
     data,
     columns,
+
     state: {
       sorting,
       pagination,
     },
+
     onSortingChange: setSorting,
     onPaginationChange: setPagination,
 
@@ -80,18 +82,7 @@ export function Table() {
     pageCount,
   });
 
-  const canPreviousPage = table.getCanPreviousPage();
-  const canNextPage = table.getCanNextPage();
-
   const page = pagination.pageIndex + 1;
-
-  const prevButtonClickHandler = () => {
-    table.previousPage();
-  };
-
-  const nextButtonClickHandler = () => {
-    table.nextPage();
-  };
 
   return (
     <div>
@@ -102,19 +93,7 @@ export function Table() {
         <Body table={table} />
       </table>
 
-      <div style={{ marginTop: 20 }}>
-        <button disabled={!canPreviousPage} onClick={prevButtonClickHandler}>
-          Prev
-        </button>
-
-        <span style={{ margin: '0 10px' }}>
-          Page {page}
-        </span>
-
-        <button disabled={!canNextPage} onClick={nextButtonClickHandler}>
-          Next
-        </button>
-      </div>
+      <Pagination table={table} page={page} />
     </div>
   );
 }
