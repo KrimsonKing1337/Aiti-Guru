@@ -15,7 +15,7 @@ import type { FetchProductParams, Product } from 'api/@types';
 
 import { goodsActions, goodsSelectors } from 'store/goods';
 
-import { columns } from './utils';
+import { columns, getSortingIcon } from './utils';
 
 export function Table() {
   const dispatch = useDispatch();
@@ -99,27 +99,22 @@ export function Table() {
       <table>
         <thead>
           {table.getHeaderGroups().map(groupCur => {
+            const { headers } = groupCur;
+
             return (
               <tr key={groupCur.id}>
-                {groupCur.headers.map(headerCur => {
+                {headers.map(headerCur => {
+                  const { column, getContext } = headerCur;
+
                   const flexRenderResult = flexRender(
-                    headerCur.column.columnDef.header,
-                    headerCur.getContext(),
+                    column.columnDef.header,
+                    getContext(),
                   );
 
-                  const sortState = headerCur.column.getIsSorted();
+                  const sortState = column.getIsSorted();
+                  const icon = getSortingIcon(sortState);
 
-                  let icon = null;
-
-                  if (sortState === 'asc') {
-                    icon = ' ^';
-                  }
-
-                  if (sortState === 'desc') {
-                    icon = ' v';
-                  }
-
-                  const clickHandler = headerCur.column.getToggleSortingHandler();
+                  const clickHandler = column.getToggleSortingHandler();
 
                   return (
                     <th
@@ -139,12 +134,16 @@ export function Table() {
 
         <tbody>
           {table.getRowModel().rows.map(rowCur => {
+            const { getVisibleCells } = rowCur;
+
             return (
               <tr key={rowCur.id}>
-                {rowCur.getVisibleCells().map(cellCur => {
+                {getVisibleCells().map(cellCur => {
+                  const { column, getContext } = cellCur;
+
                   const flexRenderResult = flexRender(
-                    cellCur.column.columnDef.cell,
-                    cellCur.getContext(),
+                    column.columnDef.cell,
+                    getContext(),
                   );
 
                   return (
