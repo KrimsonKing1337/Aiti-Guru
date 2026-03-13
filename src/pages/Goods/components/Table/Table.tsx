@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   type SortingState,
   type PaginationState,
@@ -7,8 +9,6 @@ import {
   useReactTable,
   getCoreRowModel,
 } from '@tanstack/react-table';
-
-import { useDispatch, useSelector } from 'react-redux';
 
 import type { FetchProductParams, Product } from 'api/@types';
 
