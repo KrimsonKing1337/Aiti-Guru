@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-import { useNavigate } from 'react-router';
-
 import { useDispatch, useSelector } from 'react-redux';
+
+import { Navigate, Outlet, useLocation } from 'react-router';
 
 import { authActions, authSelectors } from 'store/auth';
 
@@ -12,30 +12,38 @@ import * as styles from './Main.scss';
 
 export const Main = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const location = useLocation();
 
+  const isInited = useSelector(authSelectors.isInited);
   const isAuthed = useSelector(authSelectors.isAuthed);
-  const isFetchSuccess = useSelector(authSelectors.isFetchSuccess);
 
   useEffect(() => {
-    dispatch(authActions.authMeFetch());
-  }, []);
-
-  useEffect(() => {
-    if (isAuthed === null || isFetchSuccess === null) {
-      return;
+    if (!isInited) {
+      dispatch(authActions.authMeFetch());
     }
+  }, [dispatch, isInited]);
 
-    if (isAuthed && isFetchSuccess) {
-      navigate('/goods');
-    } else {
-      navigate('/auth');
-    }
-  }, [isAuthed, isFetchSuccess]);
+  if (!isInited) {
+    return (
+      <Wrapper wrapperClassName={styles.Wrapper}>
+        <div className={styles.Loader} />
+      </Wrapper>
+    );
+  }
 
-  return (
-    <Wrapper wrapperClassName={styles.Wrapper}>
-      <div className={styles.Loader} />
-    </Wrapper>
-  );
+  const path = location.pathname;
+
+  if (!isAuthed && path !== '/auth') {
+    return (
+      <Navigate to="/auth" replace />
+    );
+  }
+
+  if (isAuthed && (path === '/' || path === '/auth')) {
+    return (
+      <Navigate to="/goods" replace />
+    );
+  }
+
+  return <Outlet />;
 };

@@ -1,7 +1,7 @@
+import { Provider } from 'react-redux';
+
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router';
-
-import { Provider } from 'react-redux';
 
 import { store } from 'store';
 
@@ -18,9 +18,11 @@ root.render(
         <App />
 
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/goods" element={<Goods />} />
+          <Route element={<Main />}>
+            <Route path="/" element={<div />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/goods" element={<Goods />} />
+          </Route>
         </Routes>
       </>
     </BrowserRouter>

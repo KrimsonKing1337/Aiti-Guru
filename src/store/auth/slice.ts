@@ -5,6 +5,7 @@ import { State } from './@types';
 export const initialState: State = {
   login: '',
   password: '',
+  isInited: false,
   isAuthed: null,
   isFetching: false,
   isFetchSuccess: null,
@@ -20,6 +21,9 @@ const slice = createSlice({
     },
     setPassword(state, action: PayloadAction<State['password']>) {
       state.password = action.payload;
+    },
+    setInited(state, action: PayloadAction<State['isInited']>) {
+      state.isInited = action.payload;
     },
     setAuthed(state, action: PayloadAction<State['isAuthed']>) {
       state.isAuthed = action.payload;
