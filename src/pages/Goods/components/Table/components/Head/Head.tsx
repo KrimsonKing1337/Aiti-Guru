@@ -19,11 +19,10 @@ export const Head = ({ table }: HeadProps) => {
           <tr key={groupCur.id}>
             {headers.map(headerCur => {
               const { column, getContext } = headerCur;
+              const { header } = column.columnDef;
 
-              const flexRenderResult = flexRender(
-                column.columnDef.header,
-                getContext(),
-              );
+              const context = getContext();
+              const flexRenderResult = flexRender(header, context);
 
               const sortState = column.getIsSorted();
               const icon = getSortingIcon(sortState);

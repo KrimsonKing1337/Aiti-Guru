@@ -6,7 +6,6 @@ import {
 
   useReactTable,
   getCoreRowModel,
-  flexRender,
 } from '@tanstack/react-table';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +14,8 @@ import type { FetchProductParams, Product } from 'api/@types';
 
 import { goodsActions, goodsSelectors } from 'store/goods';
 
-import { Head } from './components';
+import { Head, Body } from './components';
+
 import { columns } from './utils';
 
 export function Table() {
@@ -99,31 +99,7 @@ export function Table() {
 
       <table>
         <Head table={table} />
-
-        <tbody>
-          {table.getRowModel().rows.map(rowCur => {
-            const { getVisibleCells } = rowCur;
-
-            return (
-              <tr key={rowCur.id}>
-                {getVisibleCells().map(cellCur => {
-                  const { column, getContext } = cellCur;
-
-                  const flexRenderResult = flexRender(
-                    column.columnDef.cell,
-                    getContext(),
-                  );
-
-                  return (
-                    <td key={cellCur.id}>
-                      {flexRenderResult}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
+        <Body table={table} />
       </table>
 
       <div style={{ marginTop: 20 }}>
