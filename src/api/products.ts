@@ -4,7 +4,7 @@ import type { DummyJsonError, DummyJsonProductsResponse } from './@types';
 
 export const products = async () => {
   try {
-    const response = await axios.get<DummyJsonProductsResponse>('https://dummyjson.com/auth/products');
+    const response = await axios.get<DummyJsonProductsResponse>('https://dummyjson.com/products');
 
     return response.data;
   } catch (e) {

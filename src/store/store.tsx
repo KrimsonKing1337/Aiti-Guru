@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
 import { loginReducer, watchLoginActions } from './login';
+import { goodsReducer, watchGoodsActions } from './goods';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const reducer = {
   login: loginReducer,
+  goods: goodsReducer,
 };
 
 const middlewares = [
@@ -21,5 +23,6 @@ export const store = configureStore({
 });
 
 sagaMiddleware.run(watchLoginActions);
+sagaMiddleware.run(watchGoodsActions);
 
 export type RootState = ReturnType<typeof store.getState>;
