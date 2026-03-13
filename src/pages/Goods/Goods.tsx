@@ -1,7 +1,10 @@
-import { Table } from './components';
+import { Header, Table } from './components';
 
 export const Goods = () => {
   return (
-    <Table />
+    <div>
+      <Header />
+      <Table />
+    </div>
   );
 };
