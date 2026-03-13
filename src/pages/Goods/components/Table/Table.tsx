@@ -10,7 +10,7 @@ import {
   getCoreRowModel,
 } from '@tanstack/react-table';
 
-import type { FetchProductsParams, Product } from 'api/@types';
+import type { FetchProductsParams } from 'api/@types';
 
 import { goodsActions, goodsSelectors } from 'store/goods';
 
@@ -25,8 +25,6 @@ export function Table() {
   const products = useSelector(goodsSelectors.products);
   const search = useSelector(goodsSelectors.search);
 
-  const [data, setData] = useState<Product[]>([]);
-  const [total, setTotal] = useState(0);
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const [pagination, setPagination] = useState<PaginationState>({
@@ -65,19 +63,13 @@ export function Table() {
     dispatch(goodsActions.productsFetch(params));
   }, [sorting, pagination, search]);
 
-  useEffect(() => {
-    if (!products) {
-      return;
-    }
-
-    setData(products.products);
-    setTotal(products.total);
-  }, [products]);
-
+  const total = products?.total || 0;
   const pageCount = Math.ceil(total / pagination.pageSize);
 
+  const productsData = products?.products || [];
+
   const table = useReactTable({
-    data,
+    data: productsData,
     columns,
 
     state: {
