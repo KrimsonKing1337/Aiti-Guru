@@ -42,12 +42,16 @@ export function Table() {
   }, [search]);
 
   const sort = sorting[0];
+  const sortId = sort?.id;
+  const sortDesc = sort?.desc;
+
+  const { pageIndex, pageSize } = pagination;
 
   const params = useMemo<FetchProductsParams>(() => {
-    const limit = pagination.pageSize;
-    const skip = pagination.pageIndex * pagination.pageSize;
-    const sortBy = sort?.id ?? '';
-    const order = sort?.desc ? 'desc' : 'asc';
+    const limit = pageSize;
+    const skip = pageIndex * pageSize;
+    const sortBy = sortId ?? '';
+    const order = sortDesc ? 'desc' : 'asc';
 
     const params: FetchProductsParams = {
       limit,
@@ -63,10 +67,10 @@ export function Table() {
     return params;
   }, [
     sorting,
-    pagination.pageIndex,
-    pagination.pageSize,
-    sort?.id,
-    sort?.desc,
+    pageIndex,
+    pageSize,
+    sortId,
+    sortDesc,
     search,
   ]);
 
@@ -99,7 +103,7 @@ export function Table() {
     pageCount,
   });
 
-  const page = pagination.pageIndex + 1;
+  const page = pageIndex + 1;
 
   return (
     <div>
