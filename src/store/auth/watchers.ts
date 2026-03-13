@@ -66,6 +66,7 @@ function* watchAuthMeFetch() {
 
     yield put(actions.fetchSuccess(true));
     yield put(actions.setAuthed(true));
+    yield put(actions.setInited(true));
 
     return;
   } catch (e) {
@@ -82,6 +83,7 @@ function* watchAuthMeFetch() {
     yield setTokensShared(accessToken, refreshToken);
 
     yield put(actions.setAuthed(true));
+    yield put(actions.setInited(true));
   } catch (e) {
     yield onAuthError(e);
   }

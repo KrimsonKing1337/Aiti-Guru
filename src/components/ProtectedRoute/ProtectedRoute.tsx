@@ -2,17 +2,16 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Navigate, Outlet, useLocation } from 'react-router';
+import { Navigate, Outlet } from 'react-router';
 
 import { authActions, authSelectors } from 'store/auth';
 
 import { Wrapper } from 'components';
 
-import * as styles from './Main.scss';
+import * as styles from '../../pages/Main/Main.scss';
 
-export const Main = () => {
+export const ProtectedRoute = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
 
   const isInited = useSelector(authSelectors.isInited);
   const isAuthed = useSelector(authSelectors.isAuthed);
@@ -31,18 +30,8 @@ export const Main = () => {
     );
   }
 
-  const path = location.pathname;
-
-  if (!isAuthed && path !== '/auth') {
-    return (
-      <Navigate to="/auth" replace />
-    );
-  }
-
-  if (isAuthed && (path === '/' || path === '/auth')) {
-    return (
-      <Navigate to="/goods" replace />
-    );
+  if (!isAuthed) {
+    return <Navigate to="/auth" replace />;
   }
 
   return <Outlet />;
