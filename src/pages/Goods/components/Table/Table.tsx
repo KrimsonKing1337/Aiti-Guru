@@ -18,7 +18,7 @@ import { getRememberMe } from 'utils';
 
 import { Head, Body, Pagination } from './components';
 
-import { columns } from './utils';
+import { columns } from './columns';
 
 import * as styles from './Table.scss';
 

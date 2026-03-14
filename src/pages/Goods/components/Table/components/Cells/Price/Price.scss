@@ -1,0 +1,17 @@
+@use 'styles/__mixins' as __mixins;
+
+.Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Label.override {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  color: #222;
+
+  @include __mixins.font-family-RobotoMono;
+}

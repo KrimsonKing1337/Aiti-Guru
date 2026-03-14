@@ -1,0 +1,21 @@
+.Highlight {
+  position: absolute;
+  left: -15px;
+  top: -11.5px;
+  z-index: 1;
+  height: calc(100% + 23px);
+  width: 3px;
+  background: transparent;
+  transition: background-color 0.3s ease-in-out;
+
+  &.isActive {
+    background-color: #3C538E;
+  }
+}
+
+.Thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+}
