@@ -20,6 +20,8 @@ import { Head, Body, Pagination } from './components';
 
 import { columns } from './utils';
 
+import * as styles from './Table.scss';
+
 export function Table() {
   const dispatch = useDispatch();
 
@@ -125,8 +127,16 @@ export function Table() {
   const page = pageIndex + 1;
 
   return (
-    <div>
-      {isFetching && <div>Loading...</div>}
+    <div className={styles.Wrapper}>
+      {isFetching && (
+        <div>
+          Loading...
+        </div>
+      )}
+
+      <div className={styles.Title}>
+        Все позиции
+      </div>
 
       <table>
         <Head table={table} />
