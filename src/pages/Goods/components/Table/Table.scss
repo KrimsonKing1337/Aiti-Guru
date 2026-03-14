@@ -117,19 +117,6 @@
   @include __mixins.font-family-RobotoMono;
 }
 
-.HeaderWrapper {
-  display: flex;
-  align-items: center;
+.NameHeader {
   justify-content: flex-start;
-}
-
-.HeaderLabel {
-  color: #B2B3B9;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin-left: 20px;
-
-  @include __mixins.font-family-Cairo;
 }

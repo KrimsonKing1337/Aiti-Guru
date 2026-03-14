@@ -1,28 +1,16 @@
 import { useState } from 'react';
 
-import type { ColumnDef, SortDirection } from '@tanstack/react-table';
+import type { ColumnDef } from '@tanstack/react-table';
 
 import classNames from 'classnames';
 
 import type { Product } from 'api/@types';
 
-import { Checkbox } from 'components/Checkbox';
+import { Checkbox } from 'components';
+
+import { Header } from './components';
 
 import * as styles from './Table.scss';
-
-export const getSortingIcon = (sortState: SortDirection | false) => {
-  let icon = null;
-
-  if (sortState === 'asc') {
-    icon = '↑';
-  }
-
-  if (sortState === 'desc') {
-    icon = '↓';
-  }
-
-  return icon;
-};
 
 export const formatPrice = (value: number) => {
   const [integer, decimal] = new Intl.NumberFormat('ru-RU', {
@@ -42,28 +30,14 @@ export const formatPrice = (value: number) => {
 export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: 'title',
-    header: ({ column }) => {
-      const [isChecked, setIsChecked] = useState(false);
-
-      const sort = column.getIsSorted();
-      const sortIcon = getSortingIcon(sort);
-
-      const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
-        e.stopPropagation();
-
-        setIsChecked(!isChecked);
-      };
-
-      return (
-        <div className={styles.HeaderWrapper} onClick={column.getToggleSortingHandler()}>
-          <Checkbox isChecked={isChecked} onClick={clickHandler} />
-
-          <div className={styles.HeaderLabel}>
-            Название {sortIcon}
-          </div>
-        </div>
-      );
-    },
+    header: ({ column }) => (
+      <Header
+        column={column}
+        label="Название"
+        withCheckbox={true}
+        className={styles.NameHeader}
+      />
+    ),
     cell: ({ row }) => {
       const product = row.original;
       const { thumbnail, title, description } = product;
@@ -100,7 +74,9 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: 'brand',
-    header: 'Вендор',
+    header: ({ column }) => (
+      <Header column={column} label="Вендор" />
+    ),
     cell: ({ row }) => {
       const product = row.original;
       const { brand } = product;
@@ -118,7 +94,9 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: 'sku',
-    header: 'Артикул',
+    header: ({ column }) => (
+      <Header column={column} label="Артикул" />
+    ),
     cell: ({ row }) => {
       const product = row.original;
       const { sku } = product;
@@ -136,7 +114,9 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: 'rating',
-    header: 'Оценка',
+    header: ({ column }) => (
+      <Header column={column} label="Оценка" />
+    ),
     cell: ({ row }) => {
       const product = row.original;
       const { rating } = product;
@@ -156,7 +136,9 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: 'price',
-    header: 'Цена',
+    header: ({ column }) => (
+      <Header column={column} label="Цена" />
+    ),
     cell: ({ row }) => {
       const product = row.original;
       const { price } = product;

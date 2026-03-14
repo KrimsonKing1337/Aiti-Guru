@@ -4,11 +4,11 @@ export const getSortingIcon = (sortState: SortDirection | false) => {
   let icon = null;
 
   if (sortState === 'asc') {
-    icon = ' ^';
+    icon = '↑';
   }
 
   if (sortState === 'desc') {
-    icon = ' v';
+    icon = '↓';
   }
 
   return icon;

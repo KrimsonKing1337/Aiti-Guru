@@ -1,0 +1,18 @@
+@use 'styles/__mixins' as __mixins;
+
+.Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Label {
+  color: #B2B3B9;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 20px;
+
+  @include __mixins.font-family-Cairo;
+}
