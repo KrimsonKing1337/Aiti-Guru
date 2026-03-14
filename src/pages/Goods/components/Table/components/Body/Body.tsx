@@ -8,6 +8,9 @@ export type BodyProps = {
   table: Table<Product>;
 };
 
+import * as styles from './Body.scss';
+import { getTdClassName } from './utils';
+
 export const Body = ({ table }: BodyProps) => {
   return (
     <tbody>
@@ -23,8 +26,10 @@ export const Body = ({ table }: BodyProps) => {
               const context = getContext();
               const flexRenderResult = flexRender(cell, context);
 
+              const className = getTdClassName(column.id);
+
               return (
-                <td key={cellCur.id}>
+                <td key={cellCur.id} className={styles[className]}>
                   {flexRenderResult}
                 </td>
               );

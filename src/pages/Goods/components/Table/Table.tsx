@@ -138,7 +138,7 @@ export function Table() {
         Все позиции
       </div>
 
-      <table>
+      <table className={styles.Table}>
         <Head table={table} />
         <Body table={table} />
       </table>

@@ -1,0 +1,32 @@
+@use 'styles/__mixins' as __mixins;
+
+.LabelBold {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #161919;
+
+  @include __mixins.font-family-Cairo;
+}
+
+.Label {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  @include __mixins.font-family-OpenSans;
+}
+
+.Desc {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #B2B3B9;
+
+  @include __mixins.font-family-Cairo;
+}

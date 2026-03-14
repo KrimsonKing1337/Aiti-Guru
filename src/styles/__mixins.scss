@@ -5,3 +5,7 @@
 @mixin font-family-Cairo {
   font-family: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
+
+@mixin font-family-OpenSans {
+  font-family: 'OpenSans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}

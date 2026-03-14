@@ -1,0 +1,12 @@
+@use 'styles/__mixins' as __mixins;
+
+.Th {
+  color: #B2B3B9;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+
+  @include __mixins.font-family-Cairo;
+}

@@ -5,7 +5,7 @@ import type { Product } from 'api/@types';
 export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: 'title',
-    header: 'Название',
+    header: 'Наименование',
   },
   {
     accessorKey: 'brand',

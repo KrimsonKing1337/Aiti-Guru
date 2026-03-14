@@ -5,6 +5,8 @@ import type { Product } from 'api/@types';
 
 import { getSortingIcon } from './utils';
 
+import * as styles from './Head.scss';
+
 export type HeadProps = {
   table: Table<Product>;
 };
@@ -32,7 +34,7 @@ export const Head = ({ table }: HeadProps) => {
               return (
                 <th
                   key={headerCur.id}
-                  style={{ cursor: 'pointer' }}
+                  className={styles.Th}
                   onClick={clickHandler}
                 >
                   {flexRenderResult}
