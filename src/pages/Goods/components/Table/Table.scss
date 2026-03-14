@@ -31,14 +31,6 @@
   }
 }
 
-.Cell {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 71px;
-  gap: 18px;
-}
-
 .CellHighlight {
   position: absolute;
   left: -15px;
@@ -61,46 +53,6 @@
   object-fit: cover;
 }
 
-.CellTitle {
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  color: #161919;
-  text-align: center;
-
-  @include __mixins.font-family-Cairo;
-}
-
-.CellTitleThin {
-  color: #000;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-align: center;
-
-  @include __mixins.font-family-OpenSans;
-}
-
-.CellDesc {
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  color: #B2B3B9;
-
-  @include __mixins.font-family-Cairo;
-}
-
 .PriceWrapper {
   display: flex;
   align-items: center;
@@ -115,8 +67,4 @@
   color: #222;
 
   @include __mixins.font-family-RobotoMono;
-}
-
-.NameHeader {
-  justify-content: flex-start;
 }

@@ -16,6 +16,7 @@ export type HeaderProps = {
   column: Column<Product, unknown>;
   label: string;
   withCheckbox?: boolean;
+  style?: React.CSSProperties;
   className?: string;
 };
 
@@ -23,6 +24,7 @@ export const Header = ({
   column,
   label,
   withCheckbox = false,
+  style = {},
   className = '',
 }: HeaderProps) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -42,7 +44,7 @@ export const Header = ({
   });
 
   return (
-    <div className={WrapperClassNames} onClick={column.getToggleSortingHandler()}>
+    <div style={style} className={WrapperClassNames} onClick={column.getToggleSortingHandler()}>
       {withCheckbox && (
         <Checkbox isChecked={isChecked} onClick={clickHandler} />
       )}

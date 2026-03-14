@@ -1,0 +1,15 @@
+@use 'styles/__mixins' as __mixins;
+
+.Wrapper {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #B2B3B9;
+
+  @include __mixins.font-family-Cairo;
+}

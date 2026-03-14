@@ -1,0 +1,28 @@
+@use 'styles/__mixins' as __mixins;
+
+.Wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 71px;
+  gap: 18px;
+}
+
+.ExtraWrapper {
+  width: 278px;
+}
+
+.Title {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #161919;
+  text-align: center;
+
+  @include __mixins.font-family-Cairo;
+}

@@ -8,7 +8,8 @@ import type { Product } from 'api/@types';
 
 import { Checkbox } from 'components';
 
-import { Header } from './components';
+import { Header, Cell } from './components';
+import { Desc, Title as DefaultCellTitle } from './components/Cell/components';
 
 import * as styles from './Table.scss';
 
@@ -35,7 +36,7 @@ export const columns: ColumnDef<Product>[] = [
         column={column}
         label="Название"
         withCheckbox={true}
-        className={styles.NameHeader}
+        style={{ justifyContent: 'flex-start' }}
       />
     ),
     cell: ({ row }) => {
@@ -53,22 +54,28 @@ export const columns: ColumnDef<Product>[] = [
         setIsChecked(!isChecked);
       };
 
-      return (
-        <div className={styles.Cell}>
+      const Left = (
+        <>
           <div className={cellHighlightClassName} />
           <Checkbox isChecked={isChecked} onClick={clickHandler} />
           <img src={thumbnail} alt={title} className={styles.Thumbnail} />
+        </>
+      );
 
-          <div style={{ width: '278px' }}>
-            <div style={{ textAlign: 'left' }} className={styles.CellTitle}>
-              {title}
-            </div>
+      const Title = (
+        <>
+          <DefaultCellTitle style={{ textAlign: 'left' }}>
+            {title}
+          </DefaultCellTitle>
 
-            <div className={styles.CellDesc}>
-              {description}
-            </div>
-          </div>
-        </div>
+          <Desc>
+            {description}
+          </Desc>
+        </>
+      );
+
+      return (
+        <Cell Left={Left} Title={Title} />
       );
     },
   },
@@ -82,13 +89,7 @@ export const columns: ColumnDef<Product>[] = [
       const { brand } = product;
 
       return (
-        <div className={styles.Cell}>
-          <div style={{ width: '278px' }}>
-            <div className={styles.CellTitle}>
-              {brand}
-            </div>
-          </div>
-        </div>
+        <Cell Title={brand} />
       );
     },
   },
@@ -102,13 +103,7 @@ export const columns: ColumnDef<Product>[] = [
       const { sku } = product;
 
       return (
-        <div className={styles.Cell}>
-          <div style={{ width: '278px' }}>
-            <div className={styles.CellTitleThin}>
-              {sku}
-            </div>
-          </div>
-        </div>
+        <Cell Title={sku} />
       );
     },
   },
@@ -123,14 +118,14 @@ export const columns: ColumnDef<Product>[] = [
 
       const textColor = rating < 3 ? '#F11010' : '';
 
+      const Title = (
+        <DefaultCellTitle style={{ color: textColor }} isThin={true}>
+          {rating}
+        </DefaultCellTitle>
+      );
+
       return (
-        <div className={styles.Cell}>
-          <div style={{ width: '278px' }}>
-            <div style={{ color: textColor }} className={styles.CellTitleThin}>
-              {rating}
-            </div>
-          </div>
-        </div>
+        <Cell Title={Title} />
       );
     },
   },
@@ -146,18 +141,22 @@ export const columns: ColumnDef<Product>[] = [
       const formattedPrice = formatPrice(price);
       const { integer, decimal } = formattedPrice;
 
-      return (
-        <div className={styles.Cell}>
-          <div style={{ width: '278px' }} className={styles.PriceWrapper}>
-            <div className={styles.CellTitleThin}>
+      const Title = (
+        <DefaultCellTitle isThin={true}>
+          <>
+            <span>
               {integer}
-            </div>
+            </span>
 
-            <div style={{ color: '#999' }} className={styles.CellTitleThin}>
+            <span style={{ color: '#999' }}>
               ,{decimal}
-            </div>
-          </div>
-        </div>
+            </span>
+          </>
+        </DefaultCellTitle>
+      );
+
+      return (
+        <Cell Title={Title} extraWrapperClassName={styles.PriceWrapper} />
       );
     },
   },
