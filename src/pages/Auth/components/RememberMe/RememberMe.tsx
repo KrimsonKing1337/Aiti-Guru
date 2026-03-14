@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import SquareIcon from 'assets/icons/square.svg';
-import SquareCheckedIcon from 'assets/icons/square-checked.svg';
+import { Checkbox } from 'components';
 
 import { getRememberMe, setRememberMe } from 'utils';
 
@@ -24,13 +23,9 @@ export const RememberMe = () => {
     setIsCheckedState(!isCheckedState);
   };
 
-  const Icon = isCheckedState ? SquareCheckedIcon : SquareIcon;
-
   return (
     <div className={styles.Wrapper} onClick={wrapperClickHandler}>
-      <div className={styles.Checkbox}>
-        <Icon />
-      </div>
+      <Checkbox className={styles.Checkbox} isChecked={isCheckedState} onClick={wrapperClickHandler} />
 
       <div className={styles.Label}>
         Запомнить данные

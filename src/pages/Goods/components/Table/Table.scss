@@ -23,4 +23,112 @@
 
 .Table {
   width: 100%;
+
+  thead,
+  tbody {
+    width: 100%;
+  }
+}
+
+.Cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 71px;
+  gap: 18px;
+}
+
+.CellHighlight {
+  position: absolute;
+  left: -15px;
+  top: -11.5px;
+  z-index: 1;
+  height: calc(100% + 23px);
+  width: 3px;
+  background: transparent;
+  transition: background-color 0.3s ease-in-out;
+
+  &.isActive {
+    background-color: #3C538E;
+  }
+}
+
+.Thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.CellTitle {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #161919;
+  text-align: center;
+
+  @include __mixins.font-family-Cairo;
+}
+
+.CellTitleThin {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+
+  @include __mixins.font-family-OpenSans;
+}
+
+.CellDesc {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #B2B3B9;
+
+  @include __mixins.font-family-Cairo;
+}
+
+.PriceWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Price {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  color: #222;
+
+  @include __mixins.font-family-RobotoMono;
+}
+
+.HeaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.HeaderLabel {
+  color: #B2B3B9;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 20px;
+
+  @include __mixins.font-family-Cairo;
 }

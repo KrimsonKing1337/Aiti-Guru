@@ -1,12 +1,19 @@
 @use 'styles/__mixins' as __mixins;
 
+.Tr {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 11.5px 18px;
+}
+
 .Th {
-  color: #B2B3B9;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  width: 278px;
+  text-align: center;
   cursor: pointer;
 
-  @include __mixins.font-family-Cairo;
+  &:nth-child(1) {
+    text-align: left;
+    width: 387.6px;
+  }
 }

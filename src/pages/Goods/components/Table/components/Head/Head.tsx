@@ -3,8 +3,6 @@ import { flexRender } from '@tanstack/react-table';
 
 import type { Product } from 'api/@types';
 
-import { getSortingIcon } from './utils';
-
 import * as styles from './Head.scss';
 
 export type HeadProps = {
@@ -18,16 +16,13 @@ export const Head = ({ table }: HeadProps) => {
         const { headers } = groupCur;
 
         return (
-          <tr key={groupCur.id}>
+          <tr key={groupCur.id} className={styles.Tr}>
             {headers.map(headerCur => {
               const { column, getContext } = headerCur;
               const { header } = column.columnDef;
 
               const context = getContext();
               const flexRenderResult = flexRender(header, context);
-
-              const sortState = column.getIsSorted();
-              const icon = getSortingIcon(sortState);
 
               const clickHandler = column.getToggleSortingHandler();
 
@@ -38,7 +33,6 @@ export const Head = ({ table }: HeadProps) => {
                   onClick={clickHandler}
                 >
                   {flexRenderResult}
-                  {icon}
                 </th>
               );
             })}
