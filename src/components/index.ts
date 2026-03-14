@@ -1,3 +1,3 @@
 export * from './App';
 export * from './Wrapper';
-export * from './ProtectedRoute';
+export * from './Input';

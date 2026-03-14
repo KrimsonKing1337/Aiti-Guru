@@ -21,7 +21,7 @@ export const Main = () => {
     if (!isInited) {
       dispatch(authActions.authMeFetch());
     }
-  }, [dispatch, isInited]);
+  }, [isInited]);
 
   if (!isInited) {
     return (

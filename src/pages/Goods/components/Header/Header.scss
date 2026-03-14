@@ -1,8 +1,37 @@
+@use 'styles/__mixins.scss' as __mixins;
+
 .Wrapper {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: 30px;
+  padding: 26px 30px;
+  margin-top: 20px;
+  background: #FFF;
+}
+
+.Title {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #202020;
+
+  @include __mixins.font-family-Cairo;
+}
+
+.InputMainWrapper {
+  max-width: 1023px;
   width: 100%;
-  gap: 20px;
-  margin-bottom: 20px;
+  margin: 0 auto;
+}
+
+.Input {
+  background: #F3F3F3;
+  border-radius: 8px;
+  padding: 12px 54px;
+}
+
+.InputIcon {
+  left: 20px;
 }

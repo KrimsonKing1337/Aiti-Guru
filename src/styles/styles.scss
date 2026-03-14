@@ -1,5 +1,7 @@
 @use '~reset-css/sass/reset';
 
+@use './__mixins.scss' as __mixins;
+
 html,
 body,
 :global(#root) {
@@ -8,5 +10,6 @@ body,
 
 body {
   background: #F9F9F9;
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  @include __mixins.font-family-Inter;
 }

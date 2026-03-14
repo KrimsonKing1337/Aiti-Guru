@@ -5,7 +5,9 @@ import CrossIcon from 'assets/icons/cross.svg';
 
 import { authActions, authSelectors } from 'store/auth';
 
-import { Input } from '../Input';
+import { Input } from 'components';
+
+import * as styles from './InputLogin.scss';
 
 export const InputLogin = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,8 @@ export const InputLogin = () => {
 
   return (
     <Input
+      className={styles.Wrapper}
+      name="login"
       value={value}
       setValue={setValue}
       label="Логин"

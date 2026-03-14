@@ -8,7 +8,9 @@ import EyeIcon from 'assets/icons/eye.svg';
 
 import { authActions, authSelectors } from 'store/auth';
 
-import { Input } from '../Input';
+import { Input } from 'components';
+
+import * as styles from './InputPassword.scss';
 
 export const InputPassword = () => {
   const dispatch = useDispatch();
@@ -30,6 +32,8 @@ export const InputPassword = () => {
 
   return (
     <Input
+      wrapperClassName={styles.Wrapper}
+      name="password"
       value={value}
       setValue={setValue}
       label="Пароль"

@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import SearchIcon from 'assets/icons/search.svg';
+
 import { goodsActions, goodsSelectors } from 'store/goods';
 
 import { useDebounce } from 'hooks';
+
+import { Input } from 'components';
 
 import * as styles from './Header.scss';
 
@@ -17,26 +21,29 @@ export const Header = () => {
 
   const debouncedValue = useDebounce(value, 500);
 
-  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-
   useEffect(() => {
     if (debouncedValue.length === 1) {
       return;
     }
 
     dispatch(goodsActions.setSearch(debouncedValue));
-  }, [debouncedValue, dispatch]);
+  }, [debouncedValue]);
 
   return (
     <div className={styles.Wrapper}>
-      <div>Товары</div>
+      <div className={styles.Title}>
+        Товары
+      </div>
 
-      <input
+      <Input
+        wrapperClassName={styles.InputMainWrapper}
+        className={styles.Input}
+        name="search"
+        label=""
         placeholder="Найти"
         value={value}
-        onChange={inputChangeHandler}
+        setValue={setValue}
+        Icon={SearchIcon}
       />
     </div>
   );
