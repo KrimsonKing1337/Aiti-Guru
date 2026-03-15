@@ -32,10 +32,22 @@ export const CellHeader = ({
   const sort = column.getIsSorted();
   const sortIcon = getSortingIcon(sort);
 
-  const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+  // enableSortingRemoval: true не срабатывает
+  const wrapperClickHandler = () => {
+    if (sort === 'asc') {
+      column.clearSorting();
+
+      return;
+    }
+
+    column.getToggleSortingHandler();
+  };
+
+  const checkBoxClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
 
     setIsChecked(!isChecked);
+
   };
 
   const WrapperClassNames = classNames({
@@ -44,9 +56,9 @@ export const CellHeader = ({
   });
 
   return (
-    <div style={style} className={WrapperClassNames} onClick={column.getToggleSortingHandler()}>
+    <div style={style} className={WrapperClassNames} onClick={wrapperClickHandler}>
       {withCheckbox && (
-        <Checkbox className={styles.Checkbox} isChecked={isChecked} onClick={clickHandler} />
+        <Checkbox className={styles.Checkbox} isChecked={isChecked} onClick={checkBoxClickHandler} />
       )}
 
       <div className={styles.Label}>
