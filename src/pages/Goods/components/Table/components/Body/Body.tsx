@@ -26,7 +26,7 @@ export const Body = ({ table }: BodyProps) => {
               const flexRenderResult = flexRender(cell, context);
 
               return (
-                <td key={cellCur.id}>
+                <td key={cellCur.id} className={styles.Td}>
                   {flexRenderResult}
                 </td>
               );

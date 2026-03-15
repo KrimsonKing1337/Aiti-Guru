@@ -48,8 +48,14 @@
   border: 1px solid #ECECEB;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
   @include __mixins.font-family-Cairo;
+
+  &:hover {
+    background: #797FEA;
+    color: #FFF;
+  }
 
   &.isActive {
     background: #797FEA;
