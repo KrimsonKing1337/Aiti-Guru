@@ -9,11 +9,16 @@ import { productFetchDefaultParams } from 'store/goods/utils';
 
 import * as styles from './Header.scss';
 
-export const Header = () => {
+export type HeaderProps = {
+  isFetching: boolean;
+};
+
+export const Header = ({ isFetching }: HeaderProps) => {
   const dispatch = useDispatch();
 
   const refreshButtonClickHandler = () => {
     dispatch(goodsActions.productsFetch(productFetchDefaultParams));
+
     localStorage.removeItem('sorting');
   };
 
@@ -26,6 +31,10 @@ export const Header = () => {
       <div className={styles.Label}>
         Все позиции
       </div>
+
+      {isFetching && (
+        <div className={styles.Loader} />
+      )}
 
       <div className={styles.Buttons}>
         <div className={styles.RefreshButton} onClick={refreshButtonClickHandler}>

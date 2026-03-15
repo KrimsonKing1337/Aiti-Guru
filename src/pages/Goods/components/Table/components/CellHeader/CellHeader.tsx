@@ -12,7 +12,7 @@ import { getSortingIcon } from './utils';
 
 import * as styles from './CellHeader.scss';
 
-export type HeaderProps = {
+export type CellHeaderProps = {
   column: Column<Product, unknown>;
   label: string;
   withCheckbox?: boolean;
@@ -26,7 +26,7 @@ export const CellHeader = ({
   withCheckbox = false,
   style = {},
   className = '',
-}: HeaderProps) => {
+}: CellHeaderProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const sort = column.getIsSorted();

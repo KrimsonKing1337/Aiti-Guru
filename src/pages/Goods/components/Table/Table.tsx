@@ -10,6 +10,8 @@ import {
   getCoreRowModel,
 } from '@tanstack/react-table';
 
+import classNames from 'classnames';
+
 import type { FetchProductsParams } from 'api/@types';
 
 import { goodsActions, goodsSelectors } from 'store/goods';
@@ -124,22 +126,23 @@ export function Table() {
     pageCount,
   });
 
+  const tableWrapperClassNames = classNames({
+    [styles.TableWrapper]: true,
+    [styles.isLoaded]: !isFetching,
+  });
+
   return (
     <div className={styles.Wrapper}>
-      {isFetching && (
-        <div>
-          Loading...
-        </div>
-      )}
+      <Header isFetching={isFetching} />
 
-      <Header />
+      <div className={tableWrapperClassNames}>
+        <table className={styles.Table}>
+          <Head table={table} />
+          <Body table={table} />
+        </table>
 
-      <table className={styles.Table}>
-        <Head table={table} />
-        <Body table={table} />
-      </table>
-
-      <Pagination table={table} totalRows={total} />
+        <Pagination table={table} totalRows={total} />
+      </div>
     </div>
   );
 }

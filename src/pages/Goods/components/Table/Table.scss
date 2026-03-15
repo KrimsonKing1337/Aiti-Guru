@@ -11,14 +11,19 @@
   background: #FFF;
 }
 
-.Title {
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 20px;
-  color: #333;
+.TableWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 40px;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 
-  @include __mixins.font-family-Cairo;
+  &.isLoaded {
+    opacity: 1;
+  }
 }
 
 .Table {
@@ -27,5 +32,9 @@
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
+
+  .isLoaded & {
+    overflow: auto;
+  }
 }
