@@ -1,0 +1,19 @@
+@use 'styles/__mixins' as __mixins;
+
+.Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #969B9F;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  @include __mixins.font-family-Roboto;
+}
+
+.DarkItem {
+  color: #333;
+}

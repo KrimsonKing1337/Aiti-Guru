@@ -6,10 +6,11 @@ import classNames from 'classnames';
 
 import CrossIcon from 'assets/icons/cross.svg';
 
+import { goodsActions } from 'store/goods';
+
 import { Wrapper, Input } from 'components';
 
 import * as styles from './AddProductModal.scss';
-import { goodsActions } from '../../store/goods';
 
 export type AddProductModalProps = {
   isActive?: boolean;
