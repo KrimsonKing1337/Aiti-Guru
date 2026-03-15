@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import { useNavigate } from 'react-router';
 
 import { toast } from 'react-toastify';
-
-import { useDispatch, useSelector } from 'react-redux';
 
 import LoadingIcon from 'assets/icons/loading-for-button.svg';
 

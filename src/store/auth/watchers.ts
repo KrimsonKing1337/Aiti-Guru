@@ -19,6 +19,7 @@ function* onAuthError(e: unknown) {
   yield put(actions.fetchError(err));
   yield put(actions.fetchSuccess(false));
   yield put(actions.setAuthed(false));
+  yield put(actions.setInited(true));
 }
 
 function* setTokensShared(accessToken: string, refreshToken: string) {
@@ -44,6 +45,8 @@ function* watchAuthLoginFetch() {
     const { accessToken, refreshToken }: DummyJsonAuthLoginResponse = yield call(authLogin, { login, password });
 
     yield put(actions.fetchSuccess(true));
+    yield put(actions.setInited(true));
+    yield put(actions.setAuthed(true));
 
     yield setTokensShared(accessToken, refreshToken);
   } catch (e) {
