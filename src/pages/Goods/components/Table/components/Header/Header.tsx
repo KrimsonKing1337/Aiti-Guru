@@ -1,9 +1,24 @@
+import { useDispatch } from 'react-redux';
+
 import PlusIcon from 'assets/icons/plus-circle.svg';
 import ArrowsIcon from 'assets/icons/arrows-clockwise.svg';
+
+import { goodsActions } from 'store/goods';
 
 import * as styles from './Header.scss';
 
 export const Header = () => {
+  const dispatch = useDispatch();
+
+  const refreshButtonClickHandler = () => {
+    dispatch(goodsActions.productsFetch({
+      skip: 0,
+      limit: 10,
+      order: 'desc',
+      sortBy: '',
+    }));
+  };
+
   return (
     <div className={styles.Wrapper}>
       <div className={styles.Label}>
@@ -11,7 +26,7 @@ export const Header = () => {
       </div>
 
       <div className={styles.Buttons}>
-        <div className={styles.RefreshButton}>
+        <div className={styles.RefreshButton} onClick={refreshButtonClickHandler}>
           <ArrowsIcon />
         </div>
 
