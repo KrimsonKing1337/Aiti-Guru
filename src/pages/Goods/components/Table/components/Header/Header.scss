@@ -12,7 +12,10 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-left: 20px;
 
   @include __mixins.font-family-Cairo;
+}
+
+.Checkbox {
+  margin-right: 20px;
 }

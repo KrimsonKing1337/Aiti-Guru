@@ -46,7 +46,7 @@ export const Header = ({
   return (
     <div style={style} className={WrapperClassNames} onClick={column.getToggleSortingHandler()}>
       {withCheckbox && (
-        <Checkbox isChecked={isChecked} onClick={clickHandler} />
+        <Checkbox className={styles.Checkbox} isChecked={isChecked} onClick={clickHandler} />
       )}
 
       <div className={styles.Label}>
