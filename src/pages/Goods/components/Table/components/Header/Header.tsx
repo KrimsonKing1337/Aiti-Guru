@@ -5,18 +5,16 @@ import ArrowsIcon from 'assets/icons/arrows-clockwise.svg';
 
 import { goodsActions } from 'store/goods';
 
+import { productFetchDefaultParams } from 'store/goods/utils';
+
 import * as styles from './Header.scss';
 
 export const Header = () => {
   const dispatch = useDispatch();
 
   const refreshButtonClickHandler = () => {
-    dispatch(goodsActions.productsFetch({
-      skip: 0,
-      limit: 10,
-      order: 'desc',
-      sortBy: '',
-    }));
+    dispatch(goodsActions.productsFetch(productFetchDefaultParams));
+    localStorage.removeItem('sorting');
   };
 
   return (
