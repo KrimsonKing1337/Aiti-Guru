@@ -1,0 +1,14 @@
+@keyframes spin {
+  to {
+    transform: rotate(.5turn)
+  }
+}
+
+.Loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: #000 #0000;
+  animation: spin 0.5s infinite;
+}

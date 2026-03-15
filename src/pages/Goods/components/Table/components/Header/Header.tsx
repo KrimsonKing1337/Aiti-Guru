@@ -7,6 +7,8 @@ import { goodsActions } from 'store/goods';
 
 import { productFetchDefaultParams } from 'store/goods/utils';
 
+import { Loader } from 'components';
+
 import * as styles from './Header.scss';
 
 export type HeaderProps = {
@@ -33,7 +35,7 @@ export const Header = ({ isFetching }: HeaderProps) => {
       </div>
 
       {isFetching && (
-        <div className={styles.Loader} />
+        <Loader className={styles.Loader} />
       )}
 
       <div className={styles.Buttons}>

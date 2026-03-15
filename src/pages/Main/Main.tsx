@@ -6,7 +6,7 @@ import { Navigate, Outlet, useLocation } from 'react-router';
 
 import { authActions, authSelectors } from 'store/auth';
 
-import { Wrapper } from 'components';
+import { Loader, Wrapper } from 'components';
 
 import * as styles from './Main.scss';
 
@@ -26,7 +26,7 @@ export const Main = () => {
   if (!isInited) {
     return (
       <Wrapper wrapperClassName={styles.Wrapper}>
-        <div className={styles.Loader} />
+        <Loader />
       </Wrapper>
     );
   }

@@ -1,25 +1,15 @@
 @use 'styles/__mixins' as __mixins;
 
-@keyframes spin {
-  to {
-    transform: rotate(.5turn)
-  }
-}
-
-.Loader {
-  width: 25px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 8px solid;
-  border-color: #000 #0000;
-  animation: spin 0.5s infinite;
-}
-
 .Wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+.Loader {
+  width: 25px;
+  border-width: 4px;
 }
 
 .Label {
