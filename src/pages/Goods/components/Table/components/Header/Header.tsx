@@ -17,6 +17,10 @@ export const Header = () => {
     localStorage.removeItem('sorting');
   };
 
+  const addButtonClickHandler = () => {
+    dispatch(goodsActions.setIsModalActive(true));
+  };
+
   return (
     <div className={styles.Wrapper}>
       <div className={styles.Label}>
@@ -28,7 +32,7 @@ export const Header = () => {
           <ArrowsIcon />
         </div>
 
-        <div className={styles.AddButton}>
+        <div className={styles.AddButton} onClick={addButtonClickHandler}>
           <PlusIcon />
 
           <span>

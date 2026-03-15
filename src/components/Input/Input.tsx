@@ -56,6 +56,7 @@ export const Input = ({
 
   const inputClassNames = classNames({
     [styles.Input]: true,
+    [styles.withoutIcon]: !Icon,
     [className]: !!className,
   });
 

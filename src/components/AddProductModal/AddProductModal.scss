@@ -1,0 +1,95 @@
+@use 'styles/__mixins.scss' as __mixins;
+
+.Wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 10;
+  transform: translateY(-200%);
+  transition: transform 0.3s ease-in-out;
+
+  &.isActive {
+    transform: translateY(0);
+  }
+}
+
+.WrapperWrapper {
+  position: relative;
+}
+
+.CrossIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+}
+
+.Title {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #202020;
+
+  @include __mixins.font-family-Cairo;
+}
+
+.InputsWrapper {
+  width: 100%;
+}
+
+.InputInputWrapper {
+  width: 100%;
+}
+
+.InputWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.Label {
+  flex-shrink: 0;
+  width: 30%;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #161919;
+  text-align: left;
+
+  @include __mixins.font-family-Cairo;
+}
+
+.AddButton {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  gap: 15px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  background: #242EDB;
+  color: #EBF3EA;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  @include __mixins.font-family-Cairo;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

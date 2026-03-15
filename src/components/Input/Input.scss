@@ -19,6 +19,10 @@
   padding: 14px 54px;
   border-radius: 12px;
   border: 1.5px solid #EDEDED;
+
+  &.withoutIcon {
+    padding: 14px 21px;
+  }
 }
 
 .Icon {

@@ -7,6 +7,7 @@ import type { State } from './@types';
 export const initialState: State = {
   products: null,
   search: '',
+  isModalActive: false,
   isFetching: false,
   isFetchSuccess: null,
   fetchError: null,
@@ -21,6 +22,9 @@ const slice = createSlice({
     },
     setSearch(state, action: PayloadAction<State['search']>) {
       state.search = action.payload;
+    },
+    setIsModalActive(state, action: PayloadAction<State['isModalActive']>) {
+      state.isModalActive = action.payload;
     },
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
