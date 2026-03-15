@@ -16,7 +16,7 @@ import { goodsActions, goodsSelectors } from 'store/goods';
 
 import { getRememberMe } from 'utils';
 
-import { Head, Body, Pagination } from './components';
+import { Head, Body, Pagination, Header } from './components';
 
 import { columns } from './columns';
 
@@ -134,9 +134,7 @@ export function Table() {
         </div>
       )}
 
-      <div className={styles.Title}>
-        Все позиции
-      </div>
+      <Header />
 
       <table className={styles.Table}>
         <Head table={table} />
