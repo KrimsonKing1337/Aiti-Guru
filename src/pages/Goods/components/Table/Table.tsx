@@ -124,8 +124,6 @@ export function Table() {
     pageCount,
   });
 
-  const page = pageIndex + 1;
-
   return (
     <div className={styles.Wrapper}>
       {isFetching && (
@@ -141,7 +139,7 @@ export function Table() {
         <Body table={table} />
       </table>
 
-      <Pagination table={table} page={page} />
+      <Pagination table={table} totalRows={total} />
     </div>
   );
 }

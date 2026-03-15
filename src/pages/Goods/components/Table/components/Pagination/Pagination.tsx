@@ -1,37 +1,87 @@
 import type { Table } from '@tanstack/table-core';
 
+import CaretLeftIcon from 'assets/icons/caret-left.svg';
+
 import type { Product } from 'api/@types';
 
-export type PaginationProps = {
+import { getPaginationItems } from './utils';
+
+type PaginationProps = {
   table: Table<Product>;
-  page: number;
-};
+  totalRows: number;
+}
 
-export const Pagination = ({ table, page }: PaginationProps) => {
-  const prevButtonClickHandler = () => {
-    table.previousPage();
-  };
+import * as styles from './Pagination.scss';
 
-  const nextButtonClickHandler = () => {
-    table.nextPage();
-  };
+export const Pagination = ({ table, totalRows }: PaginationProps) => {
+  const { pageIndex, pageSize } = table.getState().pagination;
 
-  const canPreviousPage = table.getCanPreviousPage();
-  const canNextPage = table.getCanNextPage();
+  const start = totalRows === 0 ? 0 : pageIndex * pageSize + 1;
+  const end = Math.min((pageIndex + 1) * pageSize, totalRows);
+  const totalPages = Math.ceil(totalRows / pageSize);
+
+  let paginationItems: (string | number)[] = [];
+
+  if (totalPages > 0) {
+    paginationItems = getPaginationItems(pageIndex, totalPages);
+  }
 
   return (
-    <div style={{ marginTop: 20 }}>
-      <button disabled={!canPreviousPage} onClick={prevButtonClickHandler}>
-        Prev
-      </button>
+    <div className={styles.Wrapper}>
+      <div className={styles.Info}>
+        <span>
+          Показано
+        </span>
 
-      <span style={{ margin: '0 10px' }}>
-          Page {page}
-      </span>
+        <span className={styles.InfoDarkItem}>
+          {start}-{end}
+        </span>
 
-      <button disabled={!canNextPage} onClick={nextButtonClickHandler}>
-        Next
-      </button>
+        <span>из</span>
+
+        <span className={styles.InfoDarkItem}>
+          {totalRows}
+        </span>
+      </div>
+
+      <div className={styles.Buttons}>
+        <button
+          type="button"
+          className={`${styles.Button} ${styles.isLeft}`}
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          <CaretLeftIcon />
+        </button>
+
+        <div className={styles.ButtonsGoTo}>
+          {paginationItems.map((item, index) =>
+            item === '...' ? (
+              <span key={`dots-${index}`} className="pagination-dots">
+              ...
+              </span>
+            ) : (
+              <button
+                key={item}
+                type="button"
+                className={item === pageIndex ? `${styles.ButtonToGo} ${styles.isActive}` : styles.ButtonToGo}
+                onClick={() => table.setPageIndex(item as number)}
+              >
+                {(item as number) + 1}
+              </button>
+            ),
+          )}
+        </div>
+
+        <button
+          type="button"
+          className={`${styles.Button} ${styles.isRight}`}
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          <CaretLeftIcon />
+        </button>
+      </div>
     </div>
   );
 };

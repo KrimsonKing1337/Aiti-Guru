@@ -1,0 +1,84 @@
+@use 'styles/__mixins' as __mixins;
+
+.Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.Info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #969B9F;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  @include __mixins.font-family-Roboto;
+}
+
+.InfoDarkItem {
+  color: #333;
+}
+
+.Buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 30px;
+}
+
+.Button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  &.isLeft {
+    &:hover {
+      transform: translateX(-2px);
+    }
+  }
+
+  &.isRight {
+    &:hover {
+      transform: translateX(2px);
+    }
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.ButtonsGoTo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ButtonToGo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #B2B3B9;
+  border: 1px solid #ECECEB;
+  border-radius: 4px;
+  cursor: pointer;
+
+  @include __mixins.font-family-Cairo;
+
+  &.isActive {
+    background: #797FEA;
+    color: #FFF;
+  }
+}
