@@ -4,3 +4,4 @@ export * from './Body';
 export * from './Pagination';
 export * from './CellHeader';
 export * from './Cell';
+export * from './Actions';

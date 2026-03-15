@@ -1,0 +1,50 @@
+.Wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 32px;
+}
+
+.AddButton {
+  display: flex;
+  width: 52px;
+  height: 27px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 23px;
+  background: #242EDB;
+  cursor: pointer;
+
+  &:hover {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  svg {
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.DotsButton {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #FFF;
+  cursor: pointer;
+
+  &:hover {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  svg {
+    transition: transform 0.3s ease-in-out;
+  }
+}

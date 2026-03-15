@@ -2,7 +2,7 @@ import type { ColumnDef } from '@tanstack/react-table';
 
 import type { Product } from 'api/@types';
 
-import { CellHeader, Cell } from './components';
+import { CellHeader, Cell, Actions } from './components';
 import { Title as TitleCell, Rating as RatingCell, Price } from './components/Cells';
 
 export const columns: ColumnDef<Product>[] = [
@@ -64,6 +64,13 @@ export const columns: ColumnDef<Product>[] = [
     ),
     cell: ({ row }) => (
       <Price row={row} />
+    ),
+  },
+  {
+    id: 'actions',
+    header: () => null,
+    cell: () => (
+      <Actions />
     ),
   },
 ];
