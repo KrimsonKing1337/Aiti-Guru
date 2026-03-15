@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 
+import { toast } from 'react-toastify';
+
 import classNames from 'classnames';
 
 import CrossIcon from 'assets/icons/cross.svg';
@@ -17,7 +19,9 @@ export type AddProductModalProps = {
   onButtonClick?: () => void;
 };
 
-export const AddProductModal = ({ isActive = false, onButtonClick = () => {} }: AddProductModalProps) => {
+export const AddProductModal = ({
+  isActive = false, onButtonClick = () => {},
+}: AddProductModalProps) => {
   const dispatch = useDispatch();
 
   const [nameInput, setNameInput] = useState('');
@@ -27,6 +31,20 @@ export const AddProductModal = ({ isActive = false, onButtonClick = () => {} }: 
 
   const onCloseIconClick = () => {
     dispatch(goodsActions.setIsModalActive(false));
+  };
+
+  const addButtonClickHandler = () => {
+    if (!nameInput
+      || !priceInput
+      || !vendorInput
+      || !skuInput
+      || !skuInput) {
+      toast.error('Все поля обязательны для заполнения');
+
+      return;
+    }
+
+    onButtonClick();
   };
 
   const wrapperClasNames = classNames({
@@ -86,7 +104,7 @@ export const AddProductModal = ({ isActive = false, onButtonClick = () => {} }: 
         />
       </div>
 
-      <div className={styles.AddButton} onClick={onButtonClick}>
+      <div className={styles.AddButton} onClick={addButtonClickHandler}>
         Добавить
       </div>
     </Wrapper>
