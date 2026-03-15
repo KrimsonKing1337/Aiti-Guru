@@ -19,7 +19,7 @@ export const Pagination = ({ table, totalRows }: PaginationProps) => {
 
   return (
     <div className={styles.Wrapper}>
-      <Info start={start} end={end} totalRows={totalRows} />.
+      <Info start={start} end={end} totalRows={totalRows} />
       <Buttons table={table} totalRows={totalRows} />
     </div>
   );
