@@ -47,7 +47,6 @@ export const CellHeader = ({
     e.stopPropagation();
 
     setIsChecked(!isChecked);
-
   };
 
   const WrapperClassNames = classNames({

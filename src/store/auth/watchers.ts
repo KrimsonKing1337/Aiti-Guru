@@ -73,6 +73,7 @@ function* watchAuthMeFetch() {
     const err = e as DummyJsonError;
 
     yield put(actions.fetchError(err));
+    yield put(actions.setInited(true));
   }
 
   try {

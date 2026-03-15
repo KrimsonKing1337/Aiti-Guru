@@ -24,7 +24,7 @@ export const InputLogin = () => {
 
   return (
     <Input
-      className={styles.Wrapper}
+      wrapperClassName={styles.Input}
       name="login"
       value={value}
       setValue={setValue}
