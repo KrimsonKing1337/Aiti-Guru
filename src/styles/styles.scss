@@ -13,3 +13,7 @@ body {
 
   @include __mixins.font-family-Inter;
 }
+
+* {
+  box-sizing: border-box;
+}

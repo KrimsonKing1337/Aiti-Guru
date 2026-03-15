@@ -28,14 +28,14 @@ export const Title = ({ row }: TitleProps) => {
     [styles.isActive]: isChecked,
   });
 
-  const clickHandler = () => {
+  const checkBoxClickHandler = () => {
     setIsChecked(!isChecked);
   };
 
   const Left = (
     <>
       <div className={highlightClassName} />
-      <Checkbox isChecked={isChecked} onClick={clickHandler} />
+      <Checkbox className={styles.Checkbox} isChecked={isChecked} onClick={checkBoxClickHandler} />
       <img src={thumbnail} alt={title} className={styles.Thumbnail} />
     </>
   );

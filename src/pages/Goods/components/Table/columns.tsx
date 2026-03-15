@@ -11,7 +11,7 @@ export const columns: ColumnDef<Product>[] = [
     header: ({ column }) => (
       <CellHeader
         column={column}
-        label="Название"
+        label="Наименование"
         withCheckbox={true}
         style={{ justifyContent: 'flex-start' }}
       />
