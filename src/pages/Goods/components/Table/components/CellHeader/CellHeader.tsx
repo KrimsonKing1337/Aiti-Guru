@@ -10,7 +10,7 @@ import { Checkbox } from 'components';
 
 import { getSortingIcon } from './utils';
 
-import * as styles from './Header.scss';
+import * as styles from './CellHeader.scss';
 
 export type HeaderProps = {
   column: Column<Product, unknown>;
@@ -20,7 +20,7 @@ export type HeaderProps = {
   className?: string;
 };
 
-export const Header = ({
+export const CellHeader = ({
   column,
   label,
   withCheckbox = false,
