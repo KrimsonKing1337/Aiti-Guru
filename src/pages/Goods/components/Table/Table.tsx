@@ -19,12 +19,13 @@ import { goodsActions, goodsSelectors } from 'store/goods';
 import { getRememberMe } from 'utils';
 
 import { Head, Body, Pagination, Header } from './components';
-
 import { columns } from './columns';
+
+import { paginationDefaultValue } from './utils';
 
 import * as styles from './Table.scss';
 
-export function Table() {
+export const Table = () => {
   const dispatch = useDispatch();
 
   const isFetching = useSelector(goodsSelectors.isFetching);
@@ -33,10 +34,7 @@ export function Table() {
 
   const [sorting, setSorting] = useState<SortingState>([]);
 
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 10,
-  });
+  const [pagination, setPagination] = useState<PaginationState>(paginationDefaultValue);
 
   useEffect(() => {
     const sortingLocalStorage = localStorage.getItem('sorting');
@@ -54,6 +52,8 @@ export function Table() {
     } else {
       localStorage.removeItem('sorting');
     }
+
+    setPagination(paginationDefaultValue);
   }, [sorting]);
 
   useEffect(() => {
@@ -145,4 +145,4 @@ export function Table() {
       </div>
     </div>
   );
-}
+};
