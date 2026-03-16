@@ -4,10 +4,15 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 71px;
+  height: 72px;
   gap: 18px;
+  transition: gap 0.3s ease-in-out;
+
+  @media screen and (max-width: 1366px) {
+    gap: 10px;
+  }
 }
 
 .ExtraWrapper {
-  width: 278px;
+  width: clamp(180px, 14vw, 278px); // 278px
 }

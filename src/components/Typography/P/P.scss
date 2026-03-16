@@ -1,7 +1,7 @@
 @use 'styles/__mixins.scss' as __mixins;
 
 @mixin P {
-  font-size: 16px;
+  font-size: clamp(15px, 0.83vw, 20px); // 16px
   font-style: normal;
   font-weight: 400;
   line-height: normal;

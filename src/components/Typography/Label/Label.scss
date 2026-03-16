@@ -1,7 +1,7 @@
 @use 'styles/__mixins.scss' as __mixins;
 
 @mixin Label {
-  font-size: 14px;
+  font-size: clamp(13px, 0.73vw, 18px); // 14px
   font-style: normal;
   font-weight: 400;
   line-height: normal;

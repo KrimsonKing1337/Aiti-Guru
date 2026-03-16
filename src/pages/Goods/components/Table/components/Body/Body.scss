@@ -8,11 +8,11 @@
 
 .Td {
   flex-shrink: 0;
-  width: 278px;
+  width: clamp(180px, 14vw, 278px); // 278px
   text-align: center;
 
   &:nth-child(1) {
     text-align: left;
-    width: 390px;
+    width: clamp(250px, 20vw, 390px); // 390px
   }
 }

@@ -2,7 +2,7 @@
 
 @mixin H1 {
   font-feature-settings: 'liga' off, 'clig' off;
-  font-size: 40px;
+  font-size: clamp(28px, 2.08vw, 60px); // 40px
   font-style: normal;
   font-weight: 600;
   line-height: 110%;

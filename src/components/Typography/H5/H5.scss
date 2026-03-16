@@ -1,7 +1,7 @@
 @use 'styles/__mixins.scss' as __mixins;
 
 @mixin H5 {
-  font-size: 18px;
+  font-size: clamp(16px, 0.94vw, 24px); // 18px
   font-style: normal;
   font-weight: 400;
   line-height: normal;

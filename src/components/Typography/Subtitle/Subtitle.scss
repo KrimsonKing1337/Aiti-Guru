@@ -2,7 +2,7 @@
 
 @mixin Subtitle {
   font-feature-settings: 'liga' off, 'clig' off;
-  font-size: 18px;
+  font-size: clamp(16px, 0.94vw, 24px); // 18px
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
