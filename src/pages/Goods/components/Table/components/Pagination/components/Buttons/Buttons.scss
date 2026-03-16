@@ -44,8 +44,8 @@
   justify-content: center;
   width: 30px;
   height: 30px;
-  color: #B2B3B9;
-  border: 1px solid #ECECEB;
+  color: var(--grey-2);
+  border: 1px solid var(--grey-8);
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -53,12 +53,12 @@
   @include __mixins.font-family-Cairo;
 
   &:hover {
-    background: #797FEA;
-    color: #FFF;
+    background: var(--purple-1);
+    color: var(--white-1);
   }
 
   &.isActive {
-    background: #797FEA;
-    color: #FFF;
+    background: var(--purple-1);
+    color: var(--white-1);
   }
 }

@@ -27,7 +27,7 @@ export const Price = ({ row }: PriceProps) => {
           {integer}
         </span>
 
-        <span style={{ color: '#999' }}>
+        <span style={{ color: 'var(--grey-1)' }}>
           ,{decimal}
         </span>
       </>

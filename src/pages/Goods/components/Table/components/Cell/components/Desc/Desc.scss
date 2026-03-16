@@ -9,7 +9,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  color: #B2B3B9;
+  color: var(--grey-2);
 
   @include __mixins.font-family-Cairo;
 }

@@ -9,7 +9,7 @@
   transition: background-color 0.3s ease-in-out;
 
   &.isActive {
-    background-color: #3C538E;
+    background-color: var(--purple-2);
   }
 }
 

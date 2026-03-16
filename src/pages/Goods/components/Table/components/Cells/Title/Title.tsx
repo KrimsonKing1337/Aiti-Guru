@@ -42,7 +42,7 @@ export const Title = ({ row }: TitleProps) => {
 
   const Title = (
     <>
-      <DefaultCellTitle style={{ textAlign: 'left' }}>
+      <DefaultCellTitle style={{ textAlign: 'left', color: 'var(--black-2)' }}>
         {title}
       </DefaultCellTitle>
 

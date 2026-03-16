@@ -7,7 +7,7 @@
   gap: 30px;
   padding: 26px 30px;
   margin-top: 20px;
-  background: #FFF;
+  background: var(--white-1);
 }
 
 .Title {
@@ -15,7 +15,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  color: #202020;
+  color: var(--black-6);
 
   @include __mixins.font-family-Cairo;
 }
@@ -27,7 +27,7 @@
 }
 
 .Input {
-  background: #F3F3F3;
+  background: var(--white-2);
   border-radius: 8px;
   padding: 12px 54px;
 }

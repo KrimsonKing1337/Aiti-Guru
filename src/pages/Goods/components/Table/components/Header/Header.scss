@@ -18,7 +18,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
-  color: #333;
+  color: var(--black-5);
 
   @include __mixins.font-family-Cairo;
 }
@@ -36,8 +36,8 @@
   justify-content: center;
   width: 42px;
   height: 42px;
-  background: #FFF;
-  border: 1px #ECECEB solid;
+  background: var(--white-1);
+  border: 1px var(--grey-8) solid;
   border-radius: 8px;
   cursor: pointer;
 

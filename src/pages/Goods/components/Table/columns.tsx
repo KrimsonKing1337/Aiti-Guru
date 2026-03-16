@@ -44,7 +44,7 @@ export const columns: ColumnDef<Product>[] = [
       const { sku } = product;
 
       return (
-        <Cell Title={sku} />
+        <Cell Title={sku} titleIsThin={true} />
       );
     },
   },

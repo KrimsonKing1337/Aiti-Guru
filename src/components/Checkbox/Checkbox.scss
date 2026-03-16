@@ -3,12 +3,12 @@
   height: 24px;
   flex-shrink: 0;
   border-radius: 4px;
-  border: 1px solid #B2B3B9;
-  background: #FFF;
+  border: 1px solid var(--grey-2);
+  background: var(--white-1);
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 
   &.isChecked {
-    background-color: #3C538E;
+    background-color: var(--purple-2);
   }
 }

@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 110%;
-  color: #222;
+  color: var(--black-4);
 
   @include __mixins.font-family-RobotoMono;
 }

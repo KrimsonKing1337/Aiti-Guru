@@ -37,7 +37,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  color: #202020;
+  color: var(--black-6);
 
   @include __mixins.font-family-Cairo;
 }
@@ -65,7 +65,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  color: #161919;
+  color: var(--black-2);
   text-align: left;
 
   @include __mixins.font-family-Cairo;
@@ -81,7 +81,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: #242EDB;
+  background: var(--blue);
   color: #EBF3EA;
   border-radius: 6px;
   cursor: pointer;

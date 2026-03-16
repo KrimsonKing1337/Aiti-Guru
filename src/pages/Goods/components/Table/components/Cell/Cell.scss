@@ -21,7 +21,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  color: #161919;
+  color: var(--black-2);
   text-align: center;
 
   @include __mixins.font-family-Cairo;
