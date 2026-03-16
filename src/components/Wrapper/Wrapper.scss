@@ -36,7 +36,7 @@
   border-radius: 34px;
   border: 1px solid #EDEDED;
   background: linear-gradient(180deg, rgba(35, 35, 35, 0.03) 0%, rgba(35, 35, 35, 0.00) 50%);
-  height: 608px;
+  min-height: 608px;
 
   @media screen and (max-width: 515px) {
     border-radius: 0;
