@@ -1,5 +1,7 @@
 @use '~reset-css/sass/reset';
+
 @use './variables.scss';
+@use 'assets/fonts/fonts.scss';
 
 @use './__mixins.scss' as __mixins;
 

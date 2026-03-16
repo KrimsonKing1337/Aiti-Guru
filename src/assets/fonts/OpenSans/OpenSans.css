@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/OpenSans/OpenSans.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("~assets/fonts/OpenSans/OpenSans-Italic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
