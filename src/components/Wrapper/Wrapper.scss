@@ -41,6 +41,7 @@
   border: 1px solid #EDEDED;
   background: linear-gradient(180deg, rgba(35, 35, 35, 0.03) 0%, rgba(35, 35, 35, 0.00) 50%);
   min-height: 608px;
+  transition: padding 0.3s ease-in-out;
 
   @media screen and (max-width: 515px) {
     border-radius: 0;
