@@ -1,0 +1,16 @@
+@use 'styles/__mixins.scss' as __mixins;
+
+@mixin H1 {
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%;
+  letter-spacing: -0.6px;
+
+  @include __mixins.font-family-Inter;
+}
+
+.Wrapper {
+  @include H1;
+}

@@ -5,11 +5,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   color: var(--grey-2);
-
-  @include __mixins.font-family-Cairo;
 }

@@ -1,3 +1,5 @@
+import { H5 } from 'components';
+
 import * as styles from './Info.scss';
 
 export type InfoProps = {
@@ -8,7 +10,7 @@ export type InfoProps = {
 
 export const Info = ({ start, end, totalRows }: InfoProps) => {
   return (
-    <div className={styles.Wrapper}>
+    <H5 className={styles.Wrapper}>
       <span>
         Показано
       </span>
@@ -24,6 +26,6 @@ export const Info = ({ start, end, totalRows }: InfoProps) => {
       <span className={styles.DarkItem}>
         {totalRows}
       </span>
-    </div>
+    </H5>
   );
 };

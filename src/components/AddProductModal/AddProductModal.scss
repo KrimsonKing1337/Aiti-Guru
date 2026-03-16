@@ -1,4 +1,5 @@
 @use 'styles/__mixins.scss' as __mixins;
+@use 'components/Typography/H6/H6.scss' as H6;
 
 .Wrapper {
   position: absolute;
@@ -33,13 +34,7 @@
 }
 
 .Title {
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
   color: var(--black-6);
-
-  @include __mixins.font-family-Cairo;
 }
 
 .InputsWrapper {
@@ -61,14 +56,10 @@
 .Label {
   flex-shrink: 0;
   width: 30%;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
   color: var(--black-2);
   text-align: left;
 
-  @include __mixins.font-family-Cairo;
+  @include H6.H6;
 }
 
 .AddButton {

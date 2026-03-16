@@ -10,7 +10,7 @@ import CrossIcon from 'assets/icons/cross.svg';
 
 import { goodsActions } from 'store/goods';
 
-import { Wrapper, Input, DefaultButton, Button } from 'components';
+import { Wrapper, Input, DefaultButton, Button, H3 } from 'components';
 
 import * as styles from './AddProductModal.scss';
 
@@ -58,9 +58,9 @@ export const AddProductModal = ({
         <CrossIcon />
       </Button>
 
-      <div className={styles.Title}>
+      <H3 className={styles.Title}>
         Добавить продукт
-      </div>
+      </H3>
 
       <div className={styles.InputsWrapper}>
         <Input

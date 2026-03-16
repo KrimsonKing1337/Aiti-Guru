@@ -1,15 +1,17 @@
+import { H1, Subtitle } from 'components';
+
 import * as styles from './Header.scss';
 
 export const Header = () => {
   return (
     <div>
-      <div className={styles.Title}>
+      <H1 className={styles.Title}>
         Добро пожаловать!
-      </div>
+      </H1>
 
-      <div className={styles.Subtitle}>
+      <Subtitle className={styles.Subtitle}>
         Пожалуйста, авторизируйтесь {/* todo: авторизуйтесь? */}
-      </div>
+      </Subtitle>
     </div>
   );
 };

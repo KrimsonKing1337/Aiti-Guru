@@ -8,7 +8,7 @@ import { goodsActions, goodsSelectors } from 'store/goods';
 
 import { useDebounce } from 'hooks';
 
-import { Input } from 'components';
+import { Input, H3 } from 'components';
 
 import * as styles from './Header.scss';
 
@@ -31,9 +31,9 @@ export const Header = () => {
 
   return (
     <div className={styles.Wrapper}>
-      <div className={styles.Title}>
+      <H3 className={styles.Title}>
         Товары
-      </div>
+      </H3>
 
       <Input
         wrapperClassName={styles.InputMainWrapper}

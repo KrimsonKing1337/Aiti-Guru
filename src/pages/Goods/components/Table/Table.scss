@@ -38,3 +38,7 @@
     overflow: auto;
   }
 }
+
+.TitleOpenSans {
+  @include __mixins.font-family-OpenSans;
+}

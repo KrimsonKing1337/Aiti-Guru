@@ -5,6 +5,8 @@ import type { Product } from 'api/@types';
 import { CellHeader, Cell, Actions } from './components';
 import { Title as TitleCell, Rating as RatingCell, Price } from './components/Cells';
 
+import * as styles from './Table.scss';
+
 export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: 'title',
@@ -30,7 +32,7 @@ export const columns: ColumnDef<Product>[] = [
       const { brand } = product;
 
       return (
-        <Cell Title={brand} />
+        <Cell Title={brand} titleClassName={styles.TitleOpenSans} />
       );
     },
   },

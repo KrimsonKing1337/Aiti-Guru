@@ -11,13 +11,7 @@
 }
 
 .Title {
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
   color: var(--black-6);
-
-  @include __mixins.font-family-Cairo;
 }
 
 .InputMainWrapper {

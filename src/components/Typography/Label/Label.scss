@@ -1,0 +1,13 @@
+@use 'styles/__mixins.scss' as __mixins;
+
+@mixin Label {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Wrapper {
+  @include Label;
+  @include __mixins.font-family-Cairo;
+}

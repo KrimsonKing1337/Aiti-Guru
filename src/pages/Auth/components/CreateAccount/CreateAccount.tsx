@@ -1,14 +1,18 @@
+import { Subtitle } from 'components';
+
 import * as styles from './CreateAccount.scss';
 
 export const CreateAccount = () => {
   return (
     <div className={styles.Wrapper}>
-      <div className={styles.Label}>
+      <Subtitle className={styles.Label}>
         Нет аккаунта?
-      </div>
+      </Subtitle>
 
-      <div role="button" className={styles.Button} aria-label="Создать аккаунт">
-        Создать
+      <div role="button" aria-label="Создать аккаунт">
+        <Subtitle className={styles.Button}>
+          Создать
+        </Subtitle>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import type { Svg } from '@types';
 
 import classNames from 'classnames';
 
-import { Button } from 'components';
+import { Button, Subtitle } from 'components';
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
@@ -73,9 +73,9 @@ export const Input = ({
 
   return (
     <label className={wrapperClassNames}>
-      <div className={labelClassNames}>
+      <Subtitle className={labelClassNames}>
         {label}
-      </div>
+      </Subtitle>
 
       <div className={inputWrapperClassNames}>
         {Icon && (

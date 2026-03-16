@@ -8,6 +8,7 @@ export type CellProps = {
   style?: React.CSSProperties;
   className?: string;
   extraWrapperClassName?: string;
+  titleClassName?: string;
   Left?: React.ReactNode;
   Title: React.ReactNode;
   titleIsThin?: boolean;
@@ -17,6 +18,7 @@ export const Cell = ({
   style = {},
   className = '',
   extraWrapperClassName = '',
+  titleClassName = '',
   Left = null,
   Title,
   titleIsThin = false,
@@ -31,13 +33,17 @@ export const Cell = ({
     [extraWrapperClassName]: !!extraWrapperClassName,
   });
 
+  const titleClassNames = classNames({
+    [titleClassName]: !!titleClassName,
+  });
+
   return (
     <div style={style} className={wrapperClassNames}>
       {Left}
 
       <div className={extraWrapperClassNames}>
         {typeof Title === 'string' && (
-          <DefaultTitle isThin={titleIsThin}>
+          <DefaultTitle className={titleClassNames} isThin={titleIsThin}>
             {Title}
           </DefaultTitle>
         )}

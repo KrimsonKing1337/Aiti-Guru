@@ -8,28 +8,18 @@
 }
 
 .Label {
-  text-align: center;
-  font-feature-settings: 'liga' off, 'clig' off;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
   color: var(--grey-6);
 }
 
 .Button {
   font-feature-settings: 'liga' off, 'clig' off;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%;
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-skip-ink: none;
   text-decoration-thickness: auto;
   text-underline-offset: auto;
   text-underline-position: from-font;
-  color: #242EDB;
+  color: var(--blue);
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 

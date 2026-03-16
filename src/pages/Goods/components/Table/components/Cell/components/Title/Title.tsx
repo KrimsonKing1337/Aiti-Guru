@@ -2,6 +2,8 @@ import type { PropsWithChildren } from 'react';
 
 import classNames from 'classnames';
 
+import { H6 } from 'components';
+
 export type TitleProps = PropsWithChildren & {
   style?: React.CSSProperties;
   className?: string;
@@ -18,8 +20,8 @@ export const Title = ({ children, style = {}, className = '', isThin = false }: 
   });
 
   return (
-    <div style={style} className={wrapperClassNames}>
+    <H6 style={style} className={wrapperClassNames}>
       {children}
-    </div>
+    </H6>
   );
 };
