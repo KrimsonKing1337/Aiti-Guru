@@ -44,6 +44,7 @@ export const Header = () => {
         value={value}
         setValue={setValue}
         Icon={SearchIcon}
+        ariaLabel="Поиск товаров"
       />
     </div>
   );

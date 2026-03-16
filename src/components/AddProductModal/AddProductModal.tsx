@@ -10,7 +10,7 @@ import CrossIcon from 'assets/icons/cross.svg';
 
 import { goodsActions } from 'store/goods';
 
-import { Wrapper, Input } from 'components';
+import { Wrapper, Input, DefaultButton, Button } from 'components';
 
 import * as styles from './AddProductModal.scss';
 
@@ -54,9 +54,9 @@ export const AddProductModal = ({
 
   return (
     <Wrapper className={wrapperClasNames} wrapperClassName={styles.WrapperWrapper}>
-      <div className={styles.CrossIcon} onClick={onCloseIconClick}>
+      <Button className={styles.CrossIcon} ariaLabel="Закрыть модальное окно" onClick={onCloseIconClick}>
         <CrossIcon />
-      </div>
+      </Button>
 
       <div className={styles.Title}>
         Добавить продукт
@@ -104,9 +104,9 @@ export const AddProductModal = ({
         />
       </div>
 
-      <div className={styles.AddButton} onClick={addButtonClickHandler}>
+      <DefaultButton className={styles.AddButton} ariaLabel="Добавить товар" onClick={addButtonClickHandler}>
         Добавить
-      </div>
+      </DefaultButton>
     </Wrapper>
   );
 };

@@ -32,6 +32,7 @@ export const InputLogin = () => {
       placeholder="Введите логин"
       Icon={UserIcon}
       ActionIcon={CrossIcon}
+      actionIconAriaLabel="Очистить поле"
       onActionIconClick={actionIconClickHandler}
     />
   );

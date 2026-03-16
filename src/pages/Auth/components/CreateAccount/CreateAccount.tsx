@@ -7,7 +7,7 @@ export const CreateAccount = () => {
         Нет аккаунта?
       </div>
 
-      <div className={styles.Button}>
+      <div role="button" className={styles.Button} aria-label="Создать аккаунт">
         Создать
       </div>
     </div>

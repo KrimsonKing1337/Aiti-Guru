@@ -29,6 +29,7 @@ export const InputPassword = () => {
 
   const type = showPassword ? 'text' : 'password';
   const ActionIcon = showPassword ? EyeIcon : EyeOffIcon;
+  const actionIconAriaLabel = showPassword ? 'Скрыть пароль' : 'Показать пароль';
 
   return (
     <Input
@@ -41,6 +42,7 @@ export const InputPassword = () => {
       placeholder="Введите пароль"
       Icon={LockIcon}
       ActionIcon={ActionIcon}
+      actionIconAriaLabel={actionIconAriaLabel}
       onActionIconClick={actionIconClickHandler}
     />
   );

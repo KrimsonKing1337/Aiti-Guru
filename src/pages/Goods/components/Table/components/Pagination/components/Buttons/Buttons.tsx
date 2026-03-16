@@ -6,6 +6,8 @@ import CaretLeftIcon from 'assets/icons/caret-left.svg';
 
 import type { Product } from 'api/@types';
 
+import { Button } from 'components';
+
 import { getPaginationItems } from './utils';
 
 export type ButtonsProps = {
@@ -38,14 +40,14 @@ export const Buttons = ({ table, totalRows }: ButtonsProps) => {
 
   return (
     <div className={styles.Wrapper}>
-      <button
-        type="button"
+      <Button
         className={leftButtonClassNames}
         onClick={() => table.previousPage()}
         disabled={!table.getCanPreviousPage()}
+        ariaLabel="Предыдущая страница"
       >
         <CaretLeftIcon />
-      </button>
+      </Button>
 
       <div className={styles.ButtonsGoTo}>
         {paginationItems.map((itemCur, index) => {
@@ -62,28 +64,31 @@ export const Buttons = ({ table, totalRows }: ButtonsProps) => {
             [styles.isActive]: itemCur === pageIndex,
           });
 
+          const value = itemCur as number + 1;
+          const ariaLabel = `Перейти на страницу ${value}`;
+
           return (
-            <button
+            <Button
               key={itemCur}
-              type="button"
               className={itemClassNames}
+              ariaLabel={ariaLabel}
               onClick={() => table.setPageIndex(itemCur as number)}
             >
-              {(itemCur as number) + 1}
-            </button>
+              {value}
+            </Button>
           );
         },
         )}
       </div>
 
-      <button
-        type="button"
+      <Button
         className={rightButtonClassNames}
         onClick={() => table.nextPage()}
         disabled={!table.getCanNextPage()}
+        ariaLabel="Следующая страница"
       >
         <CaretLeftIcon />
-      </button>
+      </Button>
     </div>
   );
 };

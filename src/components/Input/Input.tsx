@@ -2,6 +2,8 @@ import type { Svg } from '@types';
 
 import classNames from 'classnames';
 
+import { Button } from 'components';
+
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
   wrapperClassName?: string;
@@ -13,8 +15,10 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label: string;
   placeholder: string;
   type?: string;
+  ariaLabel?: string;
   Icon?: Svg;
   ActionIcon?: Svg;
+  actionIconAriaLabel?: string;
   onActionIconClick?: () => void;
 };
 
@@ -31,8 +35,10 @@ export const Input = ({
   label,
   placeholder,
   type = 'text',
+  ariaLabel = '',
   Icon,
   ActionIcon,
+  actionIconAriaLabel = '',
   onActionIconClick = () => {},
   ...etc
 }: InputProps) => {
@@ -83,14 +89,15 @@ export const Input = ({
           value={value}
           placeholder={placeholder}
           className={inputClassNames}
+          aria-label={ariaLabel}
           onChange={inputChangeHandler}
           {...etc}
         />
 
         {ActionIcon && (
-          <div className={styles.ActionIcon} onClick={onActionIconClick}>
+          <Button className={styles.ActionIcon} ariaLabel={actionIconAriaLabel} onClick={onActionIconClick}>
             <ActionIcon />
-          </div>
+          </Button>
         )}
       </div>
     </label>

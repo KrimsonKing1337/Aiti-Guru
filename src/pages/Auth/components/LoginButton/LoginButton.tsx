@@ -10,6 +10,8 @@ import LoadingIcon from 'assets/icons/loading-for-button.svg';
 
 import { authActions, authSelectors } from 'store/auth';
 
+import { Button } from 'components';
+
 import * as styles from './LoginButton.scss';
 
 export const LoginButton = () => {
@@ -40,8 +42,8 @@ export const LoginButton = () => {
   const content = isFetching ? <LoadingIcon className={styles.LoadingIcon} /> : 'Войти';
 
   return (
-    <div className={styles.Wrapper} onClick={clickHandler}>
+    <Button className={styles.Button} onClick={clickHandler}>
       {content}
-    </div>
+    </Button>
   );
 };

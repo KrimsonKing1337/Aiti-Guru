@@ -7,7 +7,7 @@ import { goodsActions } from 'store/goods';
 
 import { productFetchDefaultParams } from 'store/goods/utils';
 
-import { Loader } from 'components';
+import { Loader, Button, DefaultButton } from 'components';
 
 import * as styles from './Header.scss';
 
@@ -39,17 +39,25 @@ export const Header = ({ isFetching }: HeaderProps) => {
       )}
 
       <div className={styles.Buttons}>
-        <div className={styles.RefreshButton} onClick={refreshButtonClickHandler}>
+        <Button
+          className={styles.RefreshButton}
+          ariaLabel="Загрузить товары заново"
+          onClick={refreshButtonClickHandler}
+        >
           <ArrowsIcon />
-        </div>
+        </Button>
 
-        <div className={styles.AddButton} onClick={addButtonClickHandler}>
+        <DefaultButton
+          className={styles.AddButton}
+          ariaLabel="Добавить товар"
+          onClick={addButtonClickHandler}
+        >
           <PlusIcon />
 
           <span>
             Добавить
           </span>
-        </div>
+        </DefaultButton>
       </div>
     </div>
   );

@@ -53,22 +53,6 @@
 }
 
 .AddButton {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px 20px;
-  gap: 15px;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  background: #242EDB;
-  color: #EBF3EA;
-  border-radius: 6px;
-  cursor: pointer;
-
-  @include __mixins.font-family-Cairo;
-
   &:hover {
     svg {
       transform: rotate(180deg);
