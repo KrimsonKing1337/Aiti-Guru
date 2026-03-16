@@ -7,7 +7,7 @@ import { goodsActions } from 'store/goods';
 
 import { productFetchDefaultParams } from 'store/goods/utils';
 
-import { Loader, Button, DefaultButton } from 'components';
+import { Loader, Button, DefaultButton, H2 } from 'components';
 
 import * as styles from './Header.scss';
 
@@ -30,9 +30,9 @@ export const Header = ({ isFetching }: HeaderProps) => {
 
   return (
     <div className={styles.Wrapper}>
-      <div className={styles.Label}>
+      <H2 className={styles.Label}>
         Все позиции
-      </div>
+      </H2>
 
       {isFetching && (
         <Loader className={styles.Loader} />

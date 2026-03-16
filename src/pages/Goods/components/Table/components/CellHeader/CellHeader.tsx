@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 import type { Product } from 'api/@types';
 
-import { Checkbox } from 'components';
+import { Checkbox, H6 } from 'components';
 
 import { getSortingIcon } from './utils';
 
@@ -60,9 +60,9 @@ export const CellHeader = ({
         <Checkbox className={styles.Checkbox} isChecked={isChecked} onClick={checkBoxClickHandler} />
       )}
 
-      <div className={styles.Label}>
+      <H6 className={styles.Label}>
         {label} {sortIcon}
-      </div>
+      </H6>
     </div>
   );
 };

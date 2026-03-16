@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Checkbox } from 'components';
+import { Checkbox, Sublabel } from 'components';
 
 import { getRememberMe, setRememberMe } from 'utils';
 
@@ -27,9 +27,9 @@ export const RememberMe = () => {
     <div className={styles.Wrapper} onClick={wrapperClickHandler}>
       <Checkbox className={styles.Checkbox} isChecked={isCheckedState} onClick={wrapperClickHandler} />
 
-      <div className={styles.Label}>
+      <Sublabel className={styles.Label}>
         Запомнить данные
-      </div>
+      </Sublabel>
     </div>
   );
 };

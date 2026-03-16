@@ -1,3 +1,5 @@
+import { Sublabel } from 'components';
+
 import { Line } from './components';
 
 import * as styles from './Or.scss';
@@ -7,9 +9,9 @@ export const Or = () => {
     <div className={styles.Wrapper}>
       <Line />
 
-      <div className={styles.Label}>
+      <Sublabel className={styles.Label}>
         или
-      </div>
+      </Sublabel>
 
       <Line />
     </div>

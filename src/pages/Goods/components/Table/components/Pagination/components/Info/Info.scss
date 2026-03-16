@@ -6,12 +6,6 @@
   justify-content: center;
   gap: 4px;
   color: var(--grey-7);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-
-  @include __mixins.font-family-Roboto;
 }
 
 .DarkItem {

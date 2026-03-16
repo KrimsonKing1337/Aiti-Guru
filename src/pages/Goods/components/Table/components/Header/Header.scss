@@ -14,13 +14,7 @@
 }
 
 .Label {
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 20px;
   color: var(--black-5);
-
-  @include __mixins.font-family-Cairo;
 }
 
 .Buttons {
