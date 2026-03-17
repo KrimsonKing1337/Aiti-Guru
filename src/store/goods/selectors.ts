@@ -4,6 +4,7 @@ export const selectors = {
   products: (state: RootState) => state.goods.products,
   search: (state: RootState) => state.goods.search,
   isModalActive: (state: RootState) => state.goods.isModalActive,
+  isResetting: (state: RootState) => state.goods.isResetting,
   isFetching: (state: RootState) => state.goods.isFetching,
   isFetchSuccess: (state: RootState) => state.goods.isFetchSuccess,
   fetchError: (state: RootState) => state.goods.fetchError,

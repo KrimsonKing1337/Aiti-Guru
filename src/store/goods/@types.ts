@@ -6,5 +6,6 @@ export interface State {
   isFetching: boolean;
   isFetchSuccess: boolean | null;
   fetchError: DummyJsonError | null;
+  isResetting: boolean;
   isModalActive: boolean;
 }

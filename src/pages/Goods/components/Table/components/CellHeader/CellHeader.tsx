@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { useSelector } from 'react-redux';
 
 import type { Column } from '@tanstack/table-core';
 
 import classNames from 'classnames';
 
 import type { Product } from 'api/@types';
+
+import { goodsSelectors } from 'store/goods';
 
 import { Checkbox, H6 } from 'components';
 
@@ -27,7 +31,16 @@ export const CellHeader = ({
   style = {},
   className = '',
 }: CellHeaderProps) => {
+  const isResetting = useSelector(goodsSelectors.isResetting);
+
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    if (isResetting) {
+      setIsChecked(false);
+      column.clearSorting();
+    }
+  }, [isResetting]);
 
   const sort = column.getIsSorted();
   const sortIcon = getSortingIcon(sort);

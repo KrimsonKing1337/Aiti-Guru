@@ -19,6 +19,7 @@ export const Header = ({ isFetching }: HeaderProps) => {
   const dispatch = useDispatch();
 
   const refreshButtonClickHandler = () => {
+    dispatch(goodsActions.productsReset());
     dispatch(goodsActions.productsFetch(productFetchDefaultParams));
 
     localStorage.removeItem('sorting');

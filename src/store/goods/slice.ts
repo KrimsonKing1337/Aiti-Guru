@@ -9,6 +9,7 @@ export const initialState: State = {
   search: '',
   isModalActive: false,
   isFetching: false,
+  isResetting: false,
   isFetchSuccess: null,
   fetchError: null,
 };
@@ -31,12 +32,17 @@ const slice = createSlice({
     productsFetch(state, _action: PayloadAction<FetchProductsParams>) {
       state.isFetching = true;
     },
+    productsReset(state) {
+      state.isFetching = true;
+      state.isResetting = true;
+    },
 
     fetchSuccess(state, action: PayloadAction<State['isFetchSuccess']>) {
       state.isFetchSuccess = action.payload;
 
       if (action.payload !== null) {
         state.isFetching = false;
+        state.isResetting = false;
       }
     },
     fetchError(state, action: PayloadAction<State['fetchError']>) {
@@ -44,6 +50,7 @@ const slice = createSlice({
 
       if (action.payload !== null) {
         state.isFetching = false;
+        state.isResetting = false;
       }
     },
   },
