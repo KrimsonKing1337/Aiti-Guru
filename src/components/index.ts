@@ -5,3 +5,4 @@ export * from './Checkbox';
 export * from './Loader';
 export * from './Buttons';
 export * from './Typography';
+export * from './Modal';

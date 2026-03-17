@@ -2,9 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { goodsActions, goodsSelectors } from 'store/goods';
 
-import { AddProductModal } from 'components/AddProductModal';
-
-import { Header, Table } from './components';
+import { Header, Table, AddProductModal } from './components';
 
 import * as styles from './Goods.scss';
 

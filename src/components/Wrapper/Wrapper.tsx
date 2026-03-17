@@ -6,6 +6,7 @@ export type WrapperProps = PropsWithChildren & {
   className?: string;
   extraWrapperClassName?: string;
   wrapperClassName?: string;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 import * as styles from './Wrapper.scss';
@@ -15,6 +16,7 @@ export const Wrapper = ({
   className = '',
   extraWrapperClassName = '',
   wrapperClassName = '',
+  onClick = () => {},
 }: WrapperProps) => {
   const mainWrapperCassNames = classNames({
     [styles.MainWrapper]: true,
@@ -32,7 +34,7 @@ export const Wrapper = ({
   });
 
   return (
-    <div className={mainWrapperCassNames}>
+    <div className={mainWrapperCassNames} onClick={onClick}>
       <div className={extraWrapperClassNames}>
         <div className={wrapperClassNames}>
           {children}

@@ -4,13 +4,9 @@ import { useDispatch } from 'react-redux';
 
 import { toast } from 'react-toastify';
 
-import classNames from 'classnames';
-
-import CrossIcon from 'assets/icons/cross.svg';
-
 import { goodsActions } from 'store/goods';
 
-import { Wrapper, Input, DefaultButton, Button, H3 } from 'components';
+import { Modal, Input, DefaultButton, H3 } from 'components';
 
 import * as styles from './AddProductModal.scss';
 
@@ -19,9 +15,7 @@ export type AddProductModalProps = {
   onButtonClick?: () => void;
 };
 
-export const AddProductModal = ({
-  isActive = false, onButtonClick = () => {},
-}: AddProductModalProps) => {
+export const AddProductModal = ({ isActive = false, onButtonClick = () => {} }: AddProductModalProps) => {
   const dispatch = useDispatch();
 
   const [nameInput, setNameInput] = useState('');
@@ -47,17 +41,8 @@ export const AddProductModal = ({
     onButtonClick();
   };
 
-  const wrapperClasNames = classNames({
-    [styles.Wrapper]: true,
-    [styles.isActive]: isActive,
-  });
-
   return (
-    <Wrapper className={wrapperClasNames} wrapperClassName={styles.WrapperWrapper}>
-      <Button className={styles.CrossIcon} ariaLabel="Закрыть модальное окно" onClick={onCloseIconClick}>
-        <CrossIcon />
-      </Button>
-
+    <Modal isActive={isActive} closeHandler={onCloseIconClick}>
       <H3 className={styles.Title}>
         Добавить продукт
       </H3>
@@ -107,6 +92,6 @@ export const AddProductModal = ({
       <DefaultButton className={styles.AddButton} ariaLabel="Добавить товар" onClick={addButtonClickHandler}>
         Добавить
       </DefaultButton>
-    </Wrapper>
+    </Modal>
   );
 };
