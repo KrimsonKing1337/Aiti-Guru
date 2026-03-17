@@ -1,4 +1,4 @@
-@use 'styles/__mixins.scss' as __mixins;
+@use 'styles/_mixins' as mixins;
 
 @mixin P {
   font-size: clamp(15px, 0.83vw, 20px); // 16px
@@ -6,7 +6,7 @@
   font-weight: 400;
   line-height: normal;
 
-  @include __mixins.font-family-OpenSans;
+  @include mixins.font-family-OpenSans;
 }
 
 .Wrapper {

@@ -1,4 +1,4 @@
-@use 'styles/__mixins' as __mixins;
+@use 'styles/_mixins' as mixins;
 
 .Wrapper {
   display: flex;
@@ -40,5 +40,5 @@
 }
 
 .TitleOpenSans {
-  @include __mixins.font-family-OpenSans;
+  @include mixins.font-family-OpenSans;
 }

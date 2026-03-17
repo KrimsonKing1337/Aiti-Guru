@@ -1,4 +1,4 @@
-@use 'styles/__mixins.scss' as __mixins;
+@use 'styles/_mixins' as mixins;
 
 @mixin H2 {
   font-size: clamp(16px, 1.04vw, 28px); // 20px;
@@ -6,7 +6,7 @@
   font-style: normal;
   font-weight: 700;
 
-  @include __mixins.font-family-Cairo;
+  @include mixins.font-family-Cairo;
 }
 
 .Wrapper {

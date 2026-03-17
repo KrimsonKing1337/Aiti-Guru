@@ -1,4 +1,4 @@
-@use 'styles/__mixins.scss' as __mixins;
+@use 'styles/_mixins.scss' as mixins;
 
 @mixin Label {
   font-size: clamp(13px, 0.73vw, 18px); // 14px
@@ -9,5 +9,5 @@
 
 .Wrapper {
   @include Label;
-  @include __mixins.font-family-Cairo;
+  @include mixins.font-family-Cairo;
 }

@@ -1,4 +1,4 @@
-@use 'styles/__mixins.scss' as __mixins;
+@use 'styles/_mixins' as mixins;
 
 @mixin H5 {
   font-size: clamp(16px, 0.94vw, 24px); // 18px
@@ -6,7 +6,7 @@
   font-weight: 400;
   line-height: normal;
 
-  @include __mixins.font-family-Roboto;
+  @include mixins.font-family-Roboto;
 }
 
 .Wrapper {

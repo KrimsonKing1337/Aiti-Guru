@@ -1,4 +1,4 @@
-@use 'styles/__mixins' as __mixins;
+@use 'styles/_mixins' as mixins;
 
 .Wrapper {
   width: 100%;
@@ -11,6 +11,6 @@
   &.isThin {
     font-weight: 400;
 
-    @include __mixins.font-family-OpenSans;
+    @include mixins.font-family-OpenSans;
   }
 }

@@ -1,4 +1,4 @@
-@use 'styles/__mixins.scss' as __mixins;
+@use 'styles/_mixins.scss' as mixins;
 
 @mixin Subtitle {
   font-feature-settings: 'liga' off, 'clig' off;
@@ -6,7 +6,7 @@
   font-style: normal;
   line-height: 150%;
 
-  @include __mixins.font-family-Inter;
+  @include mixins.font-family-Inter;
 }
 
 .Wrapper {

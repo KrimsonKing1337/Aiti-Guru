@@ -1,9 +1,9 @@
 @use '~reset-css/sass/reset';
 
-@use './variables.scss';
-@use 'assets/fonts/fonts.scss';
+@use './variables';
+@use 'assets/fonts/fonts';
 
-@use './__mixins.scss' as __mixins;
+@use './_mixins' as mixins;
 
 html,
 body,
@@ -14,7 +14,7 @@ body,
 body {
   background: #F9F9F9;
 
-  @include __mixins.font-family-Inter;
+  @include mixins.font-family-Inter;
 }
 
 * {

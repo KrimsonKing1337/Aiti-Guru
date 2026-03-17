@@ -1,4 +1,4 @@
-@use 'styles/__mixins.scss' as __mixins;
+@use 'styles/_mixins' as mixins;
 
 .Button {
   display: flex;
@@ -15,5 +15,5 @@
   border-radius: 6px;
   cursor: pointer;
 
-  @include __mixins.font-family-Cairo;
+  @include mixins.font-family-Cairo;
 }
