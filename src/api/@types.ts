@@ -43,7 +43,7 @@ export type FetchProductsParams = {
   limit: number;
   skip: number;
   sortBy?: ProductSortField;
-  order: ProductSortOrder;
+  order?: ProductSortOrder;
   search?: string;
 };
 
