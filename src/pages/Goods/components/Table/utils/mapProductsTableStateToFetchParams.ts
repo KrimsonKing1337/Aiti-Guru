@@ -2,11 +2,6 @@ import type { SortingState } from '@tanstack/react-table';
 
 import type { FetchProductsParams, ProductSortField } from 'api/@types';
 
-export const paginationDefaultValue = {
-  pageIndex: 0,
-  pageSize: 10,
-};
-
 type Params = {
   pageIndex: number;
   pageSize: number;
