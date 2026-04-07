@@ -5,12 +5,11 @@ import { toast } from 'react-toastify';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import type {
-  DummyJsonError,
   DummyJsonProductsResponse,
   FetchProductsParams,
 } from 'api/@types';
 
-import { products as fetchProducts } from 'api';
+import { products as fetchProducts, isApiError, getApiErrorMessage } from 'api';
 
 import { actions } from './slice';
 
@@ -26,11 +25,10 @@ function* watchProductsFetch(action: PayloadAction<FetchProductsParams>) {
     yield put(actions.setProducts(data));
     yield put(actions.fetchSuccess(true));
   } catch (e) {
-    const err = e as DummyJsonError;
+    const err = getApiErrorMessage(e);
+    const error = isApiError(err) ? err : null;
 
-    const error = err?.response?.data?.message as string;
-
-    yield put(actions.fetchError(err));
+    yield put(actions.fetchError(error));
     yield put(actions.fetchSuccess(false));
 
     yield call(toast.error, error);

@@ -2,8 +2,18 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { toast } from 'react-toastify';
 
-import type { DummyJsonError, DummyJsonAuthLoginResponse, DummyJsonAuthRefreshResponse } from 'api/@types';
-import { authLogin, authMe, authRefresh } from 'api';
+import type {
+  DummyJsonAuthLoginResponse,
+  DummyJsonAuthRefreshResponse,
+} from 'api/@types';
+
+import {
+  authLogin,
+  authMe,
+  authRefresh,
+  isApiError,
+  getApiErrorMessage,
+} from 'api';
 
 import { loginMessagesRu } from 'utils';
 
@@ -14,9 +24,10 @@ import { selectors } from './selectors';
 import { setTokens } from './utils';
 
 function* onAuthError(e: unknown) {
-  const err = e as DummyJsonError;
+  const err = getApiErrorMessage(e);
+  const error = isApiError(err) ? err : null;
 
-  yield put(actions.fetchError(err));
+  yield put(actions.fetchError(error));
   yield put(actions.fetchSuccess(false));
   yield put(actions.setAuthed(false));
   yield put(actions.setInited(true));
@@ -50,10 +61,10 @@ function* watchAuthLoginFetch() {
 
     yield setTokensShared(accessToken, refreshToken);
   } catch (e) {
-    const err = e as DummyJsonError;
+    const err = getApiErrorMessage(e);
+    const error = isApiError(err) ? err : null;
 
-    const error = err?.response?.data?.message as string;
-    const errorRu = loginMessagesRu[error];
+    const errorRu = error ? loginMessagesRu[error] : 'Unknown error';
 
     yield onAuthError(e);
     yield call(toast.error, errorRu);
@@ -73,9 +84,10 @@ function* watchAuthMeFetch() {
 
     return;
   } catch (e) {
-    const err = e as DummyJsonError;
+    const err = getApiErrorMessage(e);
+    const error = isApiError(err) ? err : null;
 
-    yield put(actions.fetchError(err));
+    yield put(actions.fetchError(error));
     yield put(actions.setInited(true));
   }
 

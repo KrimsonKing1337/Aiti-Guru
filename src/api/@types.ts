@@ -1,7 +1,3 @@
-import type { AxiosError } from 'axios';
-
-export type DummyJsonError = AxiosError<{ message: string }>;
-
 export type DummyJsonAuthLoginResponse = {
   id: number;
   username: string;
