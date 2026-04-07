@@ -42,9 +42,22 @@ export default (env = {}, argv) => {
       },
     },
     {
-      test: /\.tsx?$/,
-      use: ['babel-loader'],
+      test: /\.ts$/,
+      loader: 'esbuild-loader',
       exclude: /node_modules/,
+      options: {
+        loader: 'ts',
+        target: 'es2020',
+      },
+    },
+    {
+      test: /\.tsx$/,
+      loader: 'esbuild-loader',
+      exclude: /node_modules/,
+      options: {
+        loader: 'tsx',
+        target: 'es2020',
+      },
     },
     {
       test: /\.s?css$/,
