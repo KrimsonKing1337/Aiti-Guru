@@ -12,7 +12,7 @@ import {
 
 import classNames from 'classnames';
 
-import type { FetchProductsParams } from 'api/@types';
+import type { FetchProductsParams, ProductSortField } from 'api/@types';
 
 import { goodsActions, goodsSelectors } from 'store/goods';
 
@@ -66,7 +66,7 @@ export const Table = () => {
   }, [search]);
 
   const sort = sorting[0];
-  const sortId = sort?.id;
+  const sortId = sort?.id as ProductSortField;
   const sortDesc = sort?.desc;
 
   const { pageIndex, pageSize } = pagination;

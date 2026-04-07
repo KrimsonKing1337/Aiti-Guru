@@ -20,39 +20,11 @@ export type Product = {
   id: number;
   title: string;
   description: string;
-  category: string;
   price: number;
-  discountPercentage: number;
   rating: number;
-  stock: number;
-  tags: string[];
   brand: string;
   sku: string;
-  weight: number;
-  dimensions: {
-    width: number;
-    height: number;
-    depth: number;
-  };
-  warrantyInformation: string;
-  shippingInformation: string;
-  availabilityStatus: string;
-  reviews: {
-    rating: number;
-    reviewText: string;
-    reviewerName: string;
-    reviewDate: string;
-  }[];
-  returnPolicy: string;
-  minimumOrderQuantity: number;
-  meta: {
-    createdAt: string;
-    updatedAt: string;
-    barcode: string;
-    qrCode: string;
-  };
   thumbnail: string;
-  images: string[];
 };
 
 export type DummyJsonProductsResponse = {
@@ -62,11 +34,20 @@ export type DummyJsonProductsResponse = {
   limit: number;
 };
 
+export type ProductSortField =
+  | 'title'
+  | 'price'
+  | 'brand'
+  | 'rating'
+  | 'sku';
+
+export type ProductSortOrder = 'asc' | 'desc';
+
 export type FetchProductsParams = {
   limit: number;
   skip: number;
-  sortBy: string;
-  order: 'asc' | 'desc';
+  sortBy?: ProductSortField;
+  order: ProductSortOrder;
   search?: string;
 };
 
