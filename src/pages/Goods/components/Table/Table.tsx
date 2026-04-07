@@ -1,130 +1,18 @@
-import { useEffect, useMemo, useState } from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
-
-import {
-  type SortingState,
-  type PaginationState,
-
-  useReactTable,
-  getCoreRowModel,
-} from '@tanstack/react-table';
+import { useSelector } from 'react-redux';
 
 import classNames from 'classnames';
 
-import type { FetchProductsParams, ProductSortField } from 'api/@types';
+import { goodsSelectors } from 'store/goods';
 
-import { goodsActions, goodsSelectors } from 'store/goods';
-
-import { getRememberMe } from 'utils';
-
+import { useTable } from './hooks';
 import { Head, Body, Pagination, Header } from './components';
-import { columns } from './columns';
-
-import { paginationDefaultValue } from './utils';
 
 import * as styles from './Table.scss';
 
 export const Table = () => {
-  const dispatch = useDispatch();
-
   const isFetching = useSelector(goodsSelectors.isFetching);
-  const products = useSelector(goodsSelectors.products);
-  const search = useSelector(goodsSelectors.search);
 
-  const [sorting, setSorting] = useState<SortingState>([]);
-
-  const [pagination, setPagination] = useState<PaginationState>(paginationDefaultValue);
-
-  useEffect(() => {
-    const sortingLocalStorage = localStorage.getItem('sorting');
-
-    if (sortingLocalStorage) {
-      setSorting(JSON.parse(sortingLocalStorage));
-    }
-  }, []);
-
-  useEffect(() => {
-    const rememberMe = getRememberMe();
-
-    if (rememberMe) {
-      localStorage.setItem('sorting', JSON.stringify(sorting));
-    } else {
-      localStorage.removeItem('sorting');
-    }
-
-    setPagination(paginationDefaultValue);
-  }, [sorting]);
-
-  useEffect(() => {
-    setPagination((prev) => {
-      return {
-        ...prev,
-        pageIndex: 0,
-      };
-    });
-  }, [search]);
-
-  const sort = sorting[0];
-  const sortId = sort?.id as ProductSortField;
-  const sortDesc = sort?.desc;
-
-  const { pageIndex, pageSize } = pagination;
-
-  const params = useMemo<FetchProductsParams>(() => {
-    const limit = pageSize;
-    const skip = pageIndex * pageSize;
-    const sortBy = sortId ?? '';
-    const order = sortDesc ? 'desc' : 'asc';
-
-    const params: FetchProductsParams = {
-      limit,
-      skip,
-      sortBy,
-      order,
-    };
-
-    if (search) {
-      params.search = search;
-    }
-
-    return params;
-  }, [
-    pageIndex,
-    pageSize,
-    sortId,
-    sortDesc,
-    search,
-  ]);
-
-  useEffect(() => {
-    dispatch(goodsActions.productsFetch(params));
-  }, [params]);
-
-  const total = products?.total || 0;
-  const pageCount = Math.ceil(total / pageSize);
-
-  const productsData = products?.products || [];
-
-  const table = useReactTable({
-    data: productsData,
-    columns,
-
-    state: {
-      sorting,
-      pagination,
-    },
-
-    onSortingChange: setSorting,
-    onPaginationChange: setPagination,
-
-    getCoreRowModel: getCoreRowModel(),
-
-    manualSorting: true,
-    manualPagination: true,
-
-    pageCount,
-  });
+  const { table, total } = useTable();
 
   const tableWrapperClassNames = classNames({
     [styles.TableWrapper]: true,
