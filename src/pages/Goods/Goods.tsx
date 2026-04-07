@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
+import { toast } from 'react-toastify';
+
 import { goodsActions, goodsSelectors } from 'store/goods';
 
 import { Header, Table, AddProductModal } from './components';
@@ -13,6 +15,8 @@ export const Goods = () => {
 
   const modalButtonClickHandler = () => {
     dispatch(goodsActions.setIsModalActive(false));
+
+    toast.success('Продукт добавлен');
   };
 
   return (

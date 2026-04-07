@@ -1,9 +1,12 @@
 import axios from 'axios';
 
+import { getStorage } from 'utils';
+
 import type { DummyJsonError, DummyJsonAuthRefreshResponse } from './@types';
 
 export const authRefresh = async () => {
-  const refreshToken = localStorage.getItem('refreshToken');
+  const storage = getStorage();
+  const refreshToken = storage.getItem('refreshToken');
 
   try {
     const response = await axios.post<DummyJsonAuthRefreshResponse>('https://dummyjson.com/auth/refresh', {

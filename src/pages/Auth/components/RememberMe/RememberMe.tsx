@@ -16,7 +16,7 @@ export const RememberMe = () => {
   }, []);
 
   useEffect(() => {
-    setRememberMe(true);
+    setRememberMe(isCheckedState);
   }, [isCheckedState]);
 
   const wrapperClickHandler = () => {

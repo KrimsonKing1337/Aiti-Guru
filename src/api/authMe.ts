@@ -1,9 +1,12 @@
 import axios from 'axios';
 
+import { getStorage } from 'utils';
+
 import type { DummyJsonError, DummyJsonAuthLoginResponse } from './@types';
 
 export const authMe = async () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const storage = getStorage();
+  const accessToken = storage.getItem('accessToken');
 
   try {
     const response = await axios.get<DummyJsonAuthLoginResponse>('https://dummyjson.com/auth/me', {

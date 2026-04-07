@@ -13,7 +13,7 @@ export const Rating = ({ row }: RatingProps) => {
   const product = row.original;
   const { rating } = product;
 
-  const textColor = rating < 3 ? '#F11010' : '';
+  const textColor = rating < 3.5 ? '#F11010' : '';
 
   const Title = (
     <DefaultCellTitle style={{ color: textColor }} isThin={true}>
